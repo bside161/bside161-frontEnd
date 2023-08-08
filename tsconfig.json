@@ -13,6 +13,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "types": ["vite/client", "@emotion/react/types/css-prop"],
 
     /* Linting */
     "strict": true,
@@ -21,5 +23,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
+  "files": ["emotion.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
