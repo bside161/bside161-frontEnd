@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // ----> image, svg
 import BottomBg from '../assets/images/bottom_bg.png';
 import { ReactComponent as Icon } from '../assets/svg/writeicon24.svg';
@@ -10,28 +10,26 @@ import { ReactComponent as Profile } from '../assets/svg/profile.svg';
 
 const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   console.log('location', location);
   return (
     <NavContainer>
-      {/* <BottomBack /> */}
-      <img style={{ width: '100%', height: '100%' }} src={BottomBg} />
-      <div style={{ width: '100%', position: 'relative' }}>
-        <NavWrapper>
-          <NavItem>
-            <ActiveFeed />
-            <NavItemText>피드</NavItemText>
-          </NavItem>
-          <NavCenterItem>
-            <Icon />
-          </NavCenterItem>
-          {/* <NavItem>글쓰기</NavItem> */}
-          <NavItem>
-            <Profile />
-            <NavItemText>프로필</NavItemText>
-          </NavItem>
-        </NavWrapper>
-      </div>
+      <NavBackImg src={BottomBg} alt="bottom-menu-back-image" />
+      <NavWrapper>
+        <NavItem onClick={() => navigate('/feed')}>
+          {location.pathname.startsWith('/feed') ? <ActiveFeed /> : <Feed />}
+          <NavItemText>피드</NavItemText>
+        </NavItem>
+        <NavCenterItem>
+          <Icon />
+        </NavCenterItem>
+        {/* <NavItem>글쓰기</NavItem> */}
+        <NavItem>
+          <Profile />
+          <NavItemText>프로필</NavItemText>
+        </NavItem>
+      </NavWrapper>
     </NavContainer>
   );
 };
@@ -44,6 +42,11 @@ const NavContainer = styled.div`
   bottom: 0;
   width: 100%;
   /* margin-bottom: 10px; */
+`;
+
+const NavBackImg = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 const NavWrapper = styled.nav`
