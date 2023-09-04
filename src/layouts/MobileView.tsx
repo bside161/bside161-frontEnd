@@ -2,12 +2,11 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-import Header from '../components/Header';
+import { Header } from '../components/Header/Header';
 
 const MobileView = () => {
   return (
     <Container>
-      <Header />
       <Wrapper>
         <Outlet />
       </Wrapper>
@@ -29,6 +28,6 @@ const Container = styled.main`
 `;
 
 const Wrapper = styled.div`
-  height: calc(100% - 120px);
+  height: calc(100% - 65px);
   overflow: auto;
 `;

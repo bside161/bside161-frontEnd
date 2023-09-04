@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { useLocation } from 'react-router-dom';
+// ----> image, svg
 import BottomBg from '../assets/images/bottom_bg.png';
 import { ReactComponent as Icon } from '../assets/svg/writeicon24.svg';
 import { ReactComponent as ActiveFeed } from '../assets/svg/active_feed.svg';
@@ -7,6 +9,9 @@ import { ReactComponent as ActiveProfile } from '../assets/svg/active_profile.sv
 import { ReactComponent as Profile } from '../assets/svg/profile.svg';
 
 const Navigation = () => {
+  const location = useLocation();
+
+  console.log('location', location);
   return (
     <NavContainer>
       {/* <BottomBack /> */}

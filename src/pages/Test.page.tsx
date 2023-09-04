@@ -5,9 +5,9 @@ export default function TestPage() {
     <div>
       Test.page
       {Array(100)
-        .fill()
+        .fill(100)
         .map((arr) => {
-          return <div>테스트</div>;
+          return <div>{arr}</div>;
         })}
     </div>
   );
