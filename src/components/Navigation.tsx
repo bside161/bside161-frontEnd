@@ -65,7 +65,6 @@ const NavItem = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 10px;
   cursor: pointer;
 `;
 
@@ -76,11 +75,10 @@ const NavItemText = styled.span`
 
 const NavCenterItem = styled.div`
   position: absolute;
-  border: 1px solid #5f27ff;
   background-color: #5f27ff;
   border-radius: 50%;
-  bottom: 30%;
-  transform: translate(-47%, -50%);
+  bottom: 0;
+  transform: translate(-50%, -50%);
   left: 50%;
   width: 55px;
   height: 55px;
