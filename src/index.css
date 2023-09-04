@@ -12,10 +12,4 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'SUIT';
-}
-
-@font-face {
-  font-family: 'SUIT';
-  src: url('./assets/fonts/SUIT-Variable.ttf');
 }
