@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
@@ -28,4 +27,5 @@ const Container = styled.main`
 
 const Wrapper = styled.div`
   height: calc(100% - 65px);
+  overflow: auto;
 `;
