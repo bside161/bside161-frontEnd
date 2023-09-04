@@ -27,4 +27,5 @@ const Container = styled.main`
 
 const Wrapper = styled.div`
   height: calc(100% - 65px);
+  overflow: auto;
 `;
