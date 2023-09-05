@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 const Feeds = () => {
   return (
     <>
-      <Header>
+      <Header main>
         <Header.Item>NAME</Header.Item>
         <Header.Item>
           <Filter />
@@ -27,7 +27,6 @@ const Feeds = () => {
 export default Feeds;
 
 const Wrapper = styled.section`
-  border: 1px solid red;
 `;
 
 const FeedFixBox = styled.div`

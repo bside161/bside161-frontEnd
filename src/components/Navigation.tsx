@@ -12,7 +12,6 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log('location', location);
   return (
     <NavContainer>
       <NavBackImg src={BottomBg} alt="bottom-menu-back-image" />
@@ -56,6 +55,7 @@ const NavWrapper = styled.nav`
   z-index: 99999;
   display: flex;
   justify-content: space-between;
+  gap: 10%;
 `;
 
 const NavItem = styled.div`
