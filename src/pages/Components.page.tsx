@@ -3,10 +3,11 @@ import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
 import PopIdeaCard from '../components/Card/PopIdeaCard.tsx';
 import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
+import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
 
 const Components = () => {
-  //라디오 예제
+  //라디오
   const [selectedRadio, setSelectedRadio] = useState<string>('');
   const handleOptionChange = (value: string) => {
     setSelectedRadio(value);
@@ -22,7 +23,7 @@ const Components = () => {
     ]);
   }, []);
 
-  //체크박스 예제
+  //체크박스
   const [checkboxOptions, setCheckboxOptions] = useState<checkboxOptions[] | []>([]);
 
   const handleCheckboxChange = (value: string, newState: boolean) => {
@@ -39,21 +40,29 @@ const Components = () => {
     ]);
   }, []);
 
-  //버튼예제
+  //버튼
   const buttonClick = () => {
     console.log('button');
   };
 
+  // 아이디어
   const ideas = [
-    { id: 1, title: '제목입니다. 제목입니다. 제목입니다.', cateogry: 'IT' },
-    { id: 2, title: '제목입니다. 제목입니다. 제목입니다.', cateogry: '디자인' },
-    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', cateogry: '기획' },
-    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', cateogry: '기획' },
-    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', cateogry: '기획' },
-    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', cateogry: '기획' },
+    { id: 1, title: '제목입니다. 제목입니다. 제목입니다.', category: 'IT' },
+    { id: 2, title: '제목입니다. 제목입니다. 제목입니다.', category: '디자인' },
+    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', category: '기획' },
+    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', category: '기획' },
+    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', category: '기획' },
+    { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', category: '기획' },
   ];
 
+  //태그
   const tags = ['팀원모집', '팀원모집', '팀원모집', '팀원모집'];
+
+  //인풋 라벨
+  const [inputText, setInputText] = useState('');
+  const handleInputChange = (value: string) => {
+    setInputText(value);
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -72,6 +81,25 @@ const Components = () => {
         <Button text={'버튼'} onClick={buttonClick} isActive={false} />
       </div>
 
+      <div>
+        <InputWithLabel
+          label={'label'}
+          limit={20}
+          value={inputText}
+          placeholder={'placeholder'}
+          isValid={true}
+          onChange={handleInputChange}
+        />
+        <InputWithLabel
+          label={'label'}
+          limit={20}
+          value={inputText}
+          placeholder={'placeholder'}
+          isValid={false}
+          onChange={handleInputChange}
+        />
+      </div>
+
       <div
         style={{
           display: 'flex',
@@ -84,7 +112,7 @@ const Components = () => {
         }}
       >
         {ideas.map((idea, idx) => {
-          return <PopIdeaCard key={idx} category={idea.cateogry} title={idea.title} />;
+          return <PopIdeaCard key={idx} category={idea.category} title={idea.title} />;
         })}
       </div>
 
