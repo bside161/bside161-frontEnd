@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { ChangeEvent, useState } from 'react';
-import { colors } from '../../styles/theme.ts';
 
 export type radioOptions = { text: string; value: string };
 type gapType = 'small' | 'large';
@@ -92,7 +91,7 @@ const RadioLabel = styled.label<{ gap: gapType }>`
 const CheckedLabel = styled(RadioLabel)`
   &::before {
     background-color: transparent;
-    border: 1.5px solid ${colors.c1};
+    border: 1.5px solid ${({ theme }) => theme.colors.c1};
     box-sizing: border-box;
   }
 
@@ -101,16 +100,16 @@ const CheckedLabel = styled(RadioLabel)`
     height: 12px;
     top: 5px;
     left: 5px;
-    background-color: ${colors.c1};
+    background-color: ${({ theme }) => theme.colors.c1};
   }
 `;
 
 const UnCheckedLabel = styled(RadioLabel)`
   &::before {
-    background-color: ${colors.l2};
+    background-color: ${({ theme }) => theme.colors.l2};
   }
 
   &::after {
-    background-color: ${colors.w1};
+    background-color: ${({ theme }) => theme.colors.w1};
   }
 `;
