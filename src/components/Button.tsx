@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { colors } from '../styles/theme.ts';
 
 interface ButtonProps {
   text: string;
@@ -22,8 +21,8 @@ const StyledButton = styled.button<{ isActive: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ isActive }) => (isActive ? colors.c1 : colors.bg1)};
-  color: ${({ isActive }) => (isActive ? colors.w1 : colors.b)};
+  background-color: ${({ isActive, theme }) => (isActive ? theme.colors.c1 : theme.colors.bg1)};
+  color: ${({ isActive, theme }) => (isActive ? theme.colors.w1 : theme.colors.b)};
   border: none;
   border-radius: 6px;
   font-size: 16px;

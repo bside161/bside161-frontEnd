@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { ReactNode } from 'react';
 import { Item } from './Item';
 
 interface HeaderProps {
@@ -15,10 +15,10 @@ Header.Item = Item;
 
 export { Header };
 
-const Container = styled.header<{main: boolean}>`
+const Container = styled.header<{ main?: boolean }>`
   padding: 15px 22px;
   height: 24px;
-  background: ${(props) => props.main ? props.theme.c1 : props.theme.w1};
+  background: ${(props) => (props.main ? props.theme.colors.c1 : props.theme.colors.w1)};
   display: flex;
   justify-content: space-between;
   align-items: center;

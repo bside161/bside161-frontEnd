@@ -1,12 +1,24 @@
 import styled from '@emotion/styled';
 
-interface TagProps {
-  texts: string[];
+export interface TagProps {
+  tags: string[];
 }
-const Tag = ({ texts }: TagProps) => {
-  return <StyledTag>{texts.map((text) => text)}</StyledTag>;
+const Tag = ({ tags }: TagProps) => {
+  return (
+    <>
+      {tags.map((tag) => (
+        <StyledTag>{tag}</StyledTag>
+      ))}
+    </>
+  );
 };
 
 export default Tag;
 
-const StyledTag = styled.div``;
+const StyledTag = styled.div`
+  background-color: ${({ theme }) => theme.colors.bg1};
+  color: ${({ theme }) => theme.colors.b9};
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+`;

@@ -2,11 +2,10 @@ import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
 // ----> image, svg
 import BottomBg from '../assets/images/bottom_bg.png';
-import { ReactComponent as Icon } from '../assets/svg/writeicon24.svg';
 import { ReactComponent as ActiveFeed } from '../assets/svg/active_feed.svg';
 import { ReactComponent as Feed } from '../assets/svg/feed.svg';
-import { ReactComponent as ActiveProfile } from '../assets/svg/active_profile.svg';
 import { ReactComponent as Profile } from '../assets/svg/profile.svg';
+import { ReactComponent as Icon } from '../assets/svg/writeicon24.svg';
 
 const Navigation = () => {
   const location = useLocation();
@@ -75,7 +74,7 @@ const NavItemText = styled.span`
 
 const NavCenterItem = styled.div`
   position: absolute;
-  background-color: #5f27ff;
+  background-color: ${({ theme }) => theme.colors.c1};
   border-radius: 50%;
   bottom: 0;
   transform: translate(-50%, -50%);
