@@ -3,13 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './assets/fonts/SUIT-Variable.css';
-import './styles/reset.css'
 import { globalStyles } from './styles/globalStyles.ts';
-import { colors } from './styles/theme.ts';
+import './styles/reset.css';
+import theme from './styles/theme.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={colors}>
+    <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
       <App />
     </ThemeProvider>

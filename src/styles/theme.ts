@@ -15,4 +15,10 @@ const colors = {
   w2: 'rgba(255, 255, 255, 0.95)',
 };
 
-export { colors };
+export type ColorsType = typeof colors;
+
+const theme = {
+  colors,
+};
+
+export default theme;
