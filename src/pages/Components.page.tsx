@@ -70,14 +70,28 @@ const Components = () => {
         <Button text={'버튼'} onClick={buttonClick} isActive={false} />
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 10, overflowX: 'scroll', overflowY:'hidden', paddingLeft: 22, paddingRight: 22 }}>
-        {ideas.map(idea => {
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'nowrap',
+          gap: 10,
+          overflowX: 'scroll',
+          overflowY: 'hidden',
+          paddingLeft: 22,
+          paddingRight: 22,
+        }}
+      >
+        {ideas.map((idea) => {
           return <PopIdeaCard category={idea.cateogry} title={idea.title} />;
         })}
       </div>
 
-      <div style={{ padding: 20}}>
-          <IdeaCard />
+      <div style={{ padding: 20 }}>
+        {Array(20)
+          .fill()
+          .map((ar) => {
+            return <IdeaCard />;
+          })}
       </div>
     </div>
   );
