@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import IeadBack from '../../assets/images/idea_back.png'
+import IdeaBack from '../../assets/images/idea_back.png';
 
 interface IdeaCardProps {
   category: string;
@@ -10,7 +10,7 @@ interface IdeaCardProps {
 const PopIdeaCard = ({ category, title, image }: IdeaCardProps) => {
   return (
     <IdeaCardWrapper>
-      <img src={IeadBack} />
+      <img src={image ?? IdeaBack} />
       <CardBoxBack />
       <CardBox>
         <div>{category}</div>
@@ -30,7 +30,7 @@ const IdeaCardWrapper = styled.div`
   position: relative;
   overflow: hidden;
   background-color: blue;
-`
+`;
 
 const CardBoxBack = styled.div`
   opacity: 0.6;
@@ -42,7 +42,7 @@ const CardBoxBack = styled.div`
 `;
 
 const CardBox = styled.div`
-  color: ${props => props.theme.w1};
+  color: ${(props) => props.theme.colors.w1};
   position: absolute;
   bottom: 0;
   display: flex;

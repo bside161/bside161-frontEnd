@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Button from '../components/Button.tsx';
+import IdeaCard from '../components/Card/IdeaCard.tsx';
+import PopIdeaCard from '../components/Card/PopIdeaCard.tsx';
 import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
-import PopIdeaCard from '../components/Card/PopIdeaCard.tsx';
-import IdeaCard from '../components/Card/IdeaCard.tsx';
 
 const Components = () => {
   //라디오 예제
@@ -53,6 +53,8 @@ const Components = () => {
     { id: 3, title: '제목입니다. 제목입니다. 제목입니다.', cateogry: '기획' },
   ];
 
+  const tags = ['팀원모집', '팀원모집', '팀원모집', '팀원모집'];
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div>
@@ -81,17 +83,15 @@ const Components = () => {
           paddingRight: 22,
         }}
       >
-        {ideas.map((idea) => {
-          return <PopIdeaCard category={idea.cateogry} title={idea.title} />;
+        {ideas.map((idea, idx) => {
+          return <PopIdeaCard key={idx} category={idea.cateogry} title={idea.title} />;
         })}
       </div>
 
       <div style={{ padding: 20 }}>
-        {Array(20)
-          .fill()
-          .map((ar) => {
-            return <IdeaCard />;
-          })}
+        {Array.from({ length: 20 }, (_, idx) => (
+          <IdeaCard key={idx} tags={tags} />
+        ))}
       </div>
     </div>
   );
