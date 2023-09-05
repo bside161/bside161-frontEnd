@@ -3,11 +3,12 @@ import styled from '@emotion/styled';
 export interface TagProps {
   tags: string[];
 }
+
 const Tag = ({ tags }: TagProps) => {
   return (
     <>
-      {tags.map((tag) => (
-        <StyledTag>{tag}</StyledTag>
+      {tags.map((tag, idx) => (
+        <StyledTag key={idx}>{tag}</StyledTag>
       ))}
     </>
   );
