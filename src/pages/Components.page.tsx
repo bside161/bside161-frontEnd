@@ -3,6 +3,7 @@ import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
 import PopIdeaCard from '../components/Card/PopIdeaCard.tsx';
 import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
+import Dropdown from '../components/Inputs/Dropdown/Dropdown.tsx';
 import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
 
@@ -64,6 +65,16 @@ const Components = () => {
     setInputText(value);
   };
 
+  //드롭다운
+  const dropdownItems = [
+    { value: '1', text: 'Dropdown item1 asdasddas' },
+    { value: '2', text: 'Dropdown item2' },
+  ];
+
+  const handleDropdownClick = (value: string) => {
+    console.log(value);
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div>
@@ -98,6 +109,10 @@ const Components = () => {
           isValid={false}
           onChange={handleInputChange}
         />
+      </div>
+
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <Dropdown onClick={handleDropdownClick} items={dropdownItems} initialValue={'다운'} />
       </div>
 
       <div
