@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
-import PopIdeaCard from '../components/Card/PopIdeaCard.tsx';
+import PopCard from '../components/Card/PopCard.tsx';
 import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
 import Dropdown from '../components/Inputs/Dropdown/Dropdown.tsx';
 import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
@@ -127,7 +127,7 @@ const Components = () => {
         }}
       >
         {ideas.map((idea, idx) => {
-          return <PopIdeaCard key={idx} category={idea.category} title={idea.title} />;
+          return <PopCard key={idx} category={idea.category} title={idea.title} />;
         })}
       </div>
 

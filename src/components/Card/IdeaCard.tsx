@@ -27,10 +27,10 @@ const IdeaCard = ({ tags }: TagProps) => {
       <ContentWrapper>
         <div style={{ fontSize: 14, color: theme.colors.c1 }}>분야 / 분야 / 분야</div>
         <div style={{ fontSize: 16, fontWeight: 600 }}>20자 내외의 제목이 들어가는 영역입니다.</div>
-        <div style={{ fontSize: 14, color: theme.colors.b6 }}>
+        <ContentText>
           3줄의 아이디어 내용이 들어가는 영역입니다. 3줄 이상부터는 말줄임표로 노출합니다. 3줄의 아이디어 내용이
           들어가는 영역입니다. 3줄 이상부터는 말줄임표로 노출합니다.
-        </div>
+        </ContentText>
         <TagWrapper>
           <Tag tags={tags} />
         </TagWrapper>
@@ -85,6 +85,18 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   gap: 8px;
   margin: 20px 0 0;
+`;
+
+const ContentText = styled.div`
+  font-size: 14px;
+  color: ${props => props.theme.colors.b6};
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
 `;
 
 const TagWrapper = styled.div`

@@ -7,7 +7,7 @@ interface IdeaCardProps {
   image?: string;
 }
 
-const PopIdeaCard = ({ category, title, image }: IdeaCardProps) => {
+const PopCard = ({ category, title, image }: IdeaCardProps) => {
   return (
     <IdeaCardWrapper>
       <img src={image ?? IdeaBack} />
@@ -20,7 +20,7 @@ const PopIdeaCard = ({ category, title, image }: IdeaCardProps) => {
   );
 };
 
-export default PopIdeaCard;
+export default PopCard;
 
 const IdeaCardWrapper = styled.div`
   flex: 0 0 auto;
