@@ -6,6 +6,7 @@ import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
 import Dropdown from '../components/Inputs/Dropdown/Dropdown.tsx';
 import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
+import BottomSheet from '../components/BottomSheet/BottomSheet.tsx';
 
 const Components = () => {
   //라디오
@@ -70,11 +71,19 @@ const Components = () => {
     { value: '1', text: 'Dropdown item1 asdasddas' },
     { value: '2', text: 'Dropdown item2' },
   ];
-
+  
   const handleDropdownClick = (value: string) => {
     console.log(value);
   };
 
+
+  // bottom sheet
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleBottomSheet = () => {
+      setIsOpen(!isOpen);
+    };
+  
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div>
@@ -88,7 +97,7 @@ const Components = () => {
       </div>
 
       <div>
-        <Button text={'버튼'} onClick={buttonClick} isActive={true} />
+        <Button text={'버튼'} onClick={toggleBottomSheet} isActive={true} />
         <Button text={'버튼'} onClick={buttonClick} isActive={false} />
       </div>
 
@@ -136,6 +145,7 @@ const Components = () => {
           <IdeaCard key={idx} tags={tags} />
         ))}
       </div>
+      <BottomSheet isOpen={isOpen}/>
     </div>
   );
 };

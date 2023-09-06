@@ -84,5 +84,5 @@ const NavCenterItem = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 99999;
+  z-index: 99;
 `;
