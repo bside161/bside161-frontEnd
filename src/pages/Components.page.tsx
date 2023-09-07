@@ -7,8 +7,15 @@ import Dropdown from '../components/Inputs/Dropdown/Dropdown.tsx';
 import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
 import BottomSheet from '../components/BottomSheet/BottomSheet.tsx';
+import Text from '../components/Text.tsx';
+
+// svg
+import { ReactComponent as Close } from '../assets/svg/close_24.svg';
+import { ReactComponent as Check } from '../assets/svg/check_24.svg';
+import { useTheme } from '@emotion/react';
 
 const Components = () => {
+  const theme = useTheme();
   //라디오
   const [selectedRadio, setSelectedRadio] = useState<string>('');
   const handleOptionChange = (value: string) => {
@@ -76,11 +83,18 @@ const Components = () => {
     console.log(value);
   };
 
-  // bottom sheet
+  // 필터 bottom sheet
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleBottomSheet = () => {
     setIsOpen(!isOpen);
+  };
+
+  // 팀원 추가 bottom sheet
+  const [isModal, setIsModal] = useState(false);
+
+  const toggleAddMember = () => {
+    setIsModal(!isModal);
   };
 
   return (
@@ -96,7 +110,8 @@ const Components = () => {
       </div>
 
       <div>
-        <Button text={'버튼'} onClick={toggleBottomSheet} isActive={true} />
+        <Button text={'필터'} onClick={toggleBottomSheet} isActive={true} />
+        <Button text={'팀원추가'} onClick={toggleAddMember} isActive={true} />
         <Button text={'버튼'} onClick={buttonClick} isActive={false} />
       </div>
 
@@ -145,12 +160,32 @@ const Components = () => {
         ))}
       </div>
       <BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            padding: 20,
+          }}
+        >
           <div>콘텐츠부분</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 7, marginBottom: 50 }}>
             <Button style={{ flex: 1 }} text={'닫기'} onClick={toggleBottomSheet} isActive={false} />
             <Button style={{ flex: 2 }} text={'적용'} onClick={buttonClick} isActive={true} />
           </div>
+        </div>
+      </BottomSheet>
+
+      <BottomSheet isOpen={isModal} onClose={() => setIsModal(false)}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: 22 }}>
+          <Close onClick={() => setIsModal(false)} />
+          <Text font={theme.typography.suit16sb}>타이틀</Text>
+          <Check />
+        </div>
+        <div style={{ display: 'flex', border: '1px solid red', height: '100%' }}>
+          <div style={{ border: '1px solid blue', flex: 1 }}>왼쪽</div>
+          <div style={{ border: '1px solid orange', flex: 2 }}>오른쪽</div>
         </div>
       </BottomSheet>
     </div>

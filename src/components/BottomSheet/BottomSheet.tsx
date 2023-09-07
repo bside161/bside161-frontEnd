@@ -19,8 +19,7 @@ const BottomSheet = ({ children, isOpen, onClose }: BottomSheetProps) => {
 };
 export default BottomSheet;
 
-const BottomSheetContainer = styled.div`
-`
+const BottomSheetContainer = styled.div``;
 
 const BottomSheetWrapper = styled.div<{ isOpen: boolean }>`
   position: fixed;
@@ -37,7 +36,7 @@ const BottomSheetWrapper = styled.div<{ isOpen: boolean }>`
   border-radius: 14px 14px 0 0;
   max-width: 480px;
   width: auto;
-  margin: 0 auto
+  margin: 0 auto;
 `;
 
 const Overlay = styled.div`
@@ -51,6 +50,5 @@ const Overlay = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 20px;
   height: 100%;
 `;
