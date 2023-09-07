@@ -9,6 +9,9 @@ import { ReactComponent as ScrapView } from '../../assets/svg/scrap_14.svg';
 import { ReactComponent as View } from '../../assets/svg/view_14.svg';
 import Tag, { TagProps } from '../Tag.tsx';
 
+import Text from '../Text.tsx';
+import Spacer from '../Spacer.tsx';
+
 const IdeaCard = ({ tags }: TagProps) => {
   const theme = useTheme();
   return (
@@ -17,16 +20,21 @@ const IdeaCard = ({ tags }: TagProps) => {
         <ProfileBox>
           <Profile />
           <div>
-            <span style={{ fontSize: 14, fontWeight: 500 }}>일이삼사오육칠팔구</span>
-            <div style={{ fontSize: 12, fontWeight: 400, marginTop: 4, color: theme.colors.b9 }}>스킬 | 작성시간</div>
+            <Text font={theme.typography.suit14m}>일이삼사오육칠팔구</Text>
+            <Spacer top={4} />
+            <Text font={theme.typography.suit12m} color={theme.colors.b9}>
+              스킬 | 작성시간
+            </Text>
           </div>
         </ProfileBox>
         <UnScrap />
       </ProfileWrapper>
 
       <ContentWrapper>
-        <div style={{ fontSize: 14, color: theme.colors.c1 }}>분야 / 분야 / 분야</div>
-        <div style={{ fontSize: 16, fontWeight: 600 }}>20자 내외의 제목이 들어가는 영역입니다.</div>
+        <Text font={theme.typography.suit14m} color={theme.colors.c1}>
+          분야 / 분야 / 분야
+        </Text>
+        <Text font={theme.typography.suit16sb}>20자 내외의 제목이 들어가는 영역입니다.</Text>
         <ContentText>
           3줄의 아이디어 내용이 들어가는 영역입니다. 3줄 이상부터는 말줄임표로 노출합니다. 3줄의 아이디어 내용이
           들어가는 영역입니다. 3줄 이상부터는 말줄임표로 노출합니다.
@@ -37,24 +45,22 @@ const IdeaCard = ({ tags }: TagProps) => {
       </ContentWrapper>
 
       <FooterWrapper>
-        <div style={{ display: 'flex', marginTop: 16 }}>
-          <FooterText>
-            <View />
-            999+
-          </FooterText>
-          <FooterText>
-            <Comment />
-            999+
-          </FooterText>
-          <FooterText>
-            <Like />
-            999+
-          </FooterText>
-          <FooterText>
-            <ScrapView />
-            999+
-          </FooterText>
-        </div>
+        <FooterText>
+          <View />
+          999+
+        </FooterText>
+        <FooterText>
+          <Comment />
+          999+
+        </FooterText>
+        <FooterText>
+          <Like />
+          999+
+        </FooterText>
+        <FooterText>
+          <ScrapView />
+          999+
+        </FooterText>
       </FooterWrapper>
     </CardContainer>
   );
@@ -89,7 +95,7 @@ const ContentWrapper = styled.div`
 
 const ContentText = styled.div`
   font-size: 14px;
-  color: ${props => props.theme.colors.b6};
+  color: ${(props) => props.theme.colors.b6};
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-break: keep-all;
@@ -107,7 +113,10 @@ const TagWrapper = styled.div`
   gap: 6px;
 `;
 
-const FooterWrapper = styled.div``;
+const FooterWrapper = styled.div`
+  display: flex;
+  margin-top: 16px;
+`;
 
 //const FooterBox = styled.div``;
 

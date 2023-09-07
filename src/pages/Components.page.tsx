@@ -71,19 +71,18 @@ const Components = () => {
     { value: '1', text: 'Dropdown item1 asdasddas' },
     { value: '2', text: 'Dropdown item2' },
   ];
-  
+
   const handleDropdownClick = (value: string) => {
     console.log(value);
   };
 
-
   // bottom sheet
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleBottomSheet = () => {
-      setIsOpen(!isOpen);
-    };
-  
+  const toggleBottomSheet = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div>
@@ -145,7 +144,15 @@ const Components = () => {
           <IdeaCard key={idx} tags={tags} />
         ))}
       </div>
-      <BottomSheet isOpen={isOpen}/>
+      <BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+          <div>콘텐츠부분</div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: 7, marginBottom: 50 }}>
+            <Button style={{ flex: 1 }} text={'닫기'} onClick={toggleBottomSheet} isActive={false} />
+            <Button style={{ flex: 2 }} text={'적용'} onClick={buttonClick} isActive={true} />
+          </div>
+        </div>
+      </BottomSheet>
     </div>
   );
 };
