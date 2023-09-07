@@ -28,7 +28,7 @@ const Panel = ({ items, setSelectedText, toggleActive, onClick }: PanelProps) =>
             handleItemClick(value, text);
           }}
         >
-          {text}
+          <span>{text}</span>
         </PanelItem>
       ))}
     </PanelWrapper>
@@ -37,7 +37,7 @@ const Panel = ({ items, setSelectedText, toggleActive, onClick }: PanelProps) =>
 
 export default Panel;
 
-const PanelWrapper = styled.ul`
+export const PanelWrapper = styled.ul`
   position: absolute;
   left: 0;
   bottom: 0;
@@ -49,7 +49,7 @@ const PanelWrapper = styled.ul`
   border-radius: 6px;
 `;
 
-const PanelItem = styled.li`
+export const PanelItem = styled.li`
   display: flex;
   justify-content: flex-start;
   align-items: center;

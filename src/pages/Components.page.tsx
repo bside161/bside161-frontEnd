@@ -3,6 +3,7 @@ import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
 import PopIdeaCard from '../components/Card/PopIdeaCard.tsx';
 import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
+import CardMenuDropdown from '../components/Inputs/Dropdown/CardMenuDropdown.tsx';
 import Dropdown from '../components/Inputs/Dropdown/Dropdown.tsx';
 import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
@@ -113,6 +114,7 @@ const Components = () => {
 
       <div style={{ display: 'flex', gap: '10px' }}>
         <Dropdown onClick={handleDropdownClick} items={dropdownItems} initialValue={'다운'} />
+        <CardMenuDropdown />
       </div>
 
       <div
