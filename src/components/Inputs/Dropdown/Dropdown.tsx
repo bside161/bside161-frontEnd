@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { ReactComponent as Arrow } from '../../../assets/svg/arrow.svg';
 import Panel, { Item } from './Panel.tsx';
+import { useToggle } from './useToggle.ts';
 
 interface DropdownProps {
   items: Item[];
@@ -10,11 +11,8 @@ interface DropdownProps {
 }
 
 const Dropdown = ({ items, initialValue, onClick }: DropdownProps) => {
-  const [isActive, setIsActive] = useState(false);
+  const { isActive, toggleActive } = useToggle();
   const [selectedText, setSelectedText] = useState(initialValue);
-  const toggleActive = () => {
-    setIsActive(!isActive);
-  };
 
   return (
     <DropdownWrapper>
@@ -30,7 +28,7 @@ const Dropdown = ({ items, initialValue, onClick }: DropdownProps) => {
 
 export default Dropdown;
 
-const DropdownWrapper = styled.div`
+export const DropdownWrapper = styled.div`
   position: relative;
 `;
 
@@ -50,5 +48,6 @@ const Trigger = styled.div`
   color: ${({ theme }) => theme.colors.b4};
   border: 1px solid ${({ theme }) => theme.colors.l2};
   border-radius: 6px;
+  
   cursor: pointer;
 `;
