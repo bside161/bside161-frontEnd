@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTheme } from '@emotion/react';
 import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
 import PopCard from '../components/Card/PopCard.tsx';
@@ -12,7 +13,6 @@ import Text from '../components/Text.tsx';
 // svg
 import { ReactComponent as Close } from '../assets/svg/close_24.svg';
 import { ReactComponent as Check } from '../assets/svg/check_24.svg';
-import { useTheme } from '@emotion/react';
 
 const Components = () => {
   const theme = useTheme();

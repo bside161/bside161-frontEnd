@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { Header } from '../../components/Header/Header';
 import { ReactComponent as Filter } from '../../assets/svg/filter.svg';
-import styled from '@emotion/styled';
 
 const Feeds = () => {
   return (
@@ -26,8 +26,7 @@ const Feeds = () => {
 
 export default Feeds;
 
-const Wrapper = styled.section`
-`;
+const Wrapper = styled.section``;
 
 const FeedFixBox = styled.div`
   padding: 40px 30px;
