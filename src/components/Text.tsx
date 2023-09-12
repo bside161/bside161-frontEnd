@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { ReactNode, CSSProperties } from 'react';
-import { TypoType } from '../styles/theme';
 
 interface TextProps {
   children: ReactNode;

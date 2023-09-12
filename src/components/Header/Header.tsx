@@ -24,4 +24,5 @@ const Container = styled.header<{ main?: boolean }>`
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
