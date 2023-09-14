@@ -4,12 +4,13 @@ import { ChangeEvent, useState } from 'react';
 export type radioOptions = { text: string; value: string };
 type gapType = 'small' | 'large';
 interface RadioProps {
+  defaultValue: string;
   options: radioOptions[];
   onChange: (selectedValue: string) => void;
   gap: gapType;
 }
-const Radio = ({ options, onChange, gap }: RadioProps) => {
-  const [selectedValue, setSelectedValue] = useState('');
+const Radio = ({ defaultValue, options, onChange, gap }: RadioProps) => {
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
   const handleOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
     onChange(event.target.value);

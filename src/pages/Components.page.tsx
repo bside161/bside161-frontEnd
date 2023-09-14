@@ -1,5 +1,10 @@
-import { useEffect, useState } from 'react';
 import { useTheme } from '@emotion/react';
+import { useEffect, useState } from 'react';
+
+import { ReactComponent as Check } from '../assets/svg/check_24.svg';
+import { ReactComponent as Close } from '../assets/svg/close_24.svg';
+import BottomSheet from '../components/BottomSheet/BottomSheet.tsx';
+import CheckBoxModal from '../components/BottomSheet/CheckBox.tsx';
 import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
 import PopCard from '../components/Card/PopCard.tsx';
@@ -7,17 +12,10 @@ import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
 import Dropdown from '../components/Inputs/Dropdown/Dropdown.tsx';
 import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
-import BottomSheet from '../components/BottomSheet/BottomSheet.tsx';
 import Text from '../components/Text.tsx';
 
 // svg
-import { ReactComponent as Close } from '../assets/svg/close_24.svg';
-import { ReactComponent as Check } from '../assets/svg/check_24.svg';
-import { useTheme } from '@emotion/react';
-import CheckBoxModal from '../components/BottomSheet/CheckBox.tsx';
-
 import { memberSelect, memberSelectDetails } from '../modules/constants.tsx';
-import { check } from 'prettier';
 
 const Components = () => {
   const theme = useTheme();

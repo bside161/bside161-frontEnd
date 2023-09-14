@@ -3,10 +3,15 @@ import styled from '@emotion/styled';
 export type checkboxOptions = { text: string; value: string; checked: boolean };
 interface CheckboxProps {
   options: checkboxOptions[];
-  onChange: (value: string, newState: boolean) => void;
+  onChange: (
+    value: string,
+    newState: boolean,
+    setState: React.Dispatch<React.SetStateAction<checkboxOptions[]>>,
+  ) => void;
+  setState: React.Dispatch<React.SetStateAction<checkboxOptions[]>>;
 }
 
-const Checkbox = ({ options, onChange }: CheckboxProps) => {
+const Checkbox = ({ options, onChange, setState }: CheckboxProps) => {
   return (
     <CheckboxWrapper>
       {options.map((option) => (
@@ -17,7 +22,7 @@ const Checkbox = ({ options, onChange }: CheckboxProps) => {
             type="checkbox"
             defaultChecked={option.checked}
             onChange={() => {
-              onChange(option.value, option.checked);
+              onChange(option.value, option.checked, setState);
             }}
           />
           <CheckboxLabel htmlFor={option.value} checked={option.checked}>
