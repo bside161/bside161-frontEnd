@@ -51,10 +51,9 @@ const NavWrapper = styled.nav`
   width: 100%;
   position: absolute;
   bottom: 10%;
-  z-index: 99999;
   display: flex;
   justify-content: space-between;
-  gap: 10%;
+  gap: 15%;
 `;
 
 const NavItem = styled.div`
@@ -85,4 +84,5 @@ const NavCenterItem = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 99;
 `;

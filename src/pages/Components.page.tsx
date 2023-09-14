@@ -1,13 +1,26 @@
 import { useEffect, useState } from 'react';
+import { useTheme } from '@emotion/react';
 import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
-import PopIdeaCard from '../components/Card/PopIdeaCard.tsx';
+import PopCard from '../components/Card/PopCard.tsx';
 import Checkbox, { checkboxOptions } from '../components/Inputs/Checkbox.tsx';
 import Dropdown from '../components/Inputs/Dropdown/Dropdown.tsx';
 import InputWithLabel from '../components/Inputs/InputWithLabel.tsx';
 import Radio, { radioOptions } from '../components/Inputs/Radio.tsx';
+import BottomSheet from '../components/BottomSheet/BottomSheet.tsx';
+import Text from '../components/Text.tsx';
+
+// svg
+import { ReactComponent as Close } from '../assets/svg/close_24.svg';
+import { ReactComponent as Check } from '../assets/svg/check_24.svg';
+import { useTheme } from '@emotion/react';
+import CheckBoxModal from '../components/BottomSheet/CheckBox.tsx';
+
+import { memberSelect, memberSelectDetails } from '../modules/constants.tsx';
+import { check } from 'prettier';
 
 const Components = () => {
+  const theme = useTheme();
   //라디오
   const [selectedRadio, setSelectedRadio] = useState<string>('');
   const handleOptionChange = (value: string) => {
@@ -75,6 +88,45 @@ const Components = () => {
     console.log(value);
   };
 
+  // 필터 bottom sheet
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleBottomSheet = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // 팀원 추가 bottom sheet
+  const [isModal, setIsModal] = useState(false);
+
+  const toggleAddMember = () => {
+    setIsModal(!isModal);
+  };
+
+  // 모달 체크박스
+  const [selectMain, setSelectMain] = useState({ text: '기획', value: '기획' });
+  const [modalCheckboxOptions, setModalCheckboxOptions] = useState<checkboxOptions[] | []>([]);
+
+  const handleModalCheckboxChange = (value: string, newState: boolean) => {
+    setModalCheckboxOptions((prevCheckboxes) =>
+      prevCheckboxes.map(
+        (checkbox) =>
+          checkbox.parent === selectMain.text && {
+            ...checkbox,
+            options: checkbox.options.map((option) =>
+              option.value === value ? { ...option, checked: !newState } : option,
+            ),
+          },
+      ),
+    );
+  };
+
+  useEffect(() => {
+    setModalCheckboxOptions(memberSelectDetails.filter((detail) => detail.parent === selectMain.value));
+  }, [selectMain]);
+
+  console.log('selectMain', selectMain);
+  console.log('modalCheckboxOptions', modalCheckboxOptions[0]?.options);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div>
@@ -88,7 +140,8 @@ const Components = () => {
       </div>
 
       <div>
-        <Button text={'버튼'} onClick={buttonClick} isActive={true} />
+        <Button text={'필터'} onClick={toggleBottomSheet} isActive={true} />
+        <Button text={'팀원추가'} onClick={toggleAddMember} isActive={true} />
         <Button text={'버튼'} onClick={buttonClick} isActive={false} />
       </div>
 
@@ -127,7 +180,7 @@ const Components = () => {
         }}
       >
         {ideas.map((idea, idx) => {
-          return <PopIdeaCard key={idx} category={idea.category} title={idea.title} />;
+          return <PopCard key={idx} category={idea.category} title={idea.title} />;
         })}
       </div>
 
@@ -136,6 +189,52 @@ const Components = () => {
           <IdeaCard key={idx} tags={tags} />
         ))}
       </div>
+      <BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            padding: 20,
+          }}
+        >
+          <div>콘텐츠부분</div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: 7, marginBottom: 50 }}>
+            <Button style={{ flex: 1 }} text={'닫기'} onClick={toggleBottomSheet} isActive={false} />
+            <Button style={{ flex: 2 }} text={'적용'} onClick={buttonClick} isActive={true} />
+          </div>
+        </div>
+      </BottomSheet>
+
+      <BottomSheet isOpen={isModal} onClose={() => setIsModal(false)}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: 22 }}>
+          <Close onClick={() => setIsModal(false)} />
+          <Text font={theme.typography.suit16sb}>타이틀</Text>
+          <Check />
+        </div>
+        <div style={{ display: 'flex', height: '100%' }}>
+          <div style={{ flex: 1 }}>
+            {memberSelect.map((select) => {
+              return (
+                <div
+                  style={{
+                    padding: '18px 22px',
+                    color: selectMain.text === select.text ? theme.colors.b2 : theme.colors.ba,
+                    background: selectMain.text === select.text ? theme.colors.w1 : theme.colors.bg1,
+                  }}
+                  onClick={() => setSelectMain(select)}
+                >
+                  <Text font={theme.typography.suit14m}>{select.text}</Text>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ flex: 2 }}>
+            <CheckBoxModal options={modalCheckboxOptions[0]?.options} onChange={handleModalCheckboxChange} />
+          </div>
+        </div>
+      </BottomSheet>
     </div>
   );
 };
