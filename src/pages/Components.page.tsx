@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTheme } from '@emotion/react';
 import Button from '../components/Button.tsx';
 import IdeaCard from '../components/Card/IdeaCard.tsx';
 import PopCard from '../components/Card/PopCard.tsx';

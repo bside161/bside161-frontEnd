@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { Header } from '../../components/Header/Header';
 import { ReactComponent as Filter } from '../../assets/svg/filter.svg';
 import styled from '@emotion/styled';
