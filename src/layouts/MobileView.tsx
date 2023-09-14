@@ -27,7 +27,7 @@ const Container = styled.main`
 `;
 
 const Wrapper = styled.div`
-  height: calc(100% - 65px);
+  height: calc(100% - 30px);
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

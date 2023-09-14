@@ -13,6 +13,11 @@ import Text from '../components/Text.tsx';
 // svg
 import { ReactComponent as Close } from '../assets/svg/close_24.svg';
 import { ReactComponent as Check } from '../assets/svg/check_24.svg';
+import { useTheme } from '@emotion/react';
+import CheckBoxModal from '../components/BottomSheet/CheckBox.tsx';
+
+import { memberSelect, memberSelectDetails } from '../modules/constants.tsx';
+import { check } from 'prettier';
 
 const Components = () => {
   const theme = useTheme();
@@ -96,6 +101,31 @@ const Components = () => {
   const toggleAddMember = () => {
     setIsModal(!isModal);
   };
+
+  // 모달 체크박스
+  const [selectMain, setSelectMain] = useState({ text: '기획', value: '기획' });
+  const [modalCheckboxOptions, setModalCheckboxOptions] = useState<checkboxOptions[] | []>([]);
+
+  const handleModalCheckboxChange = (value: string, newState: boolean) => {
+    setModalCheckboxOptions((prevCheckboxes) =>
+      prevCheckboxes.map(
+        (checkbox) =>
+          checkbox.parent === selectMain.text && {
+            ...checkbox,
+            options: checkbox.options.map((option) =>
+              option.value === value ? { ...option, checked: !newState } : option,
+            ),
+          },
+      ),
+    );
+  };
+
+  useEffect(() => {
+    setModalCheckboxOptions(memberSelectDetails.filter((detail) => detail.parent === selectMain.value));
+  }, [selectMain]);
+
+  console.log('selectMain', selectMain);
+  console.log('modalCheckboxOptions', modalCheckboxOptions[0]?.options);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -183,9 +213,26 @@ const Components = () => {
           <Text font={theme.typography.suit16sb}>타이틀</Text>
           <Check />
         </div>
-        <div style={{ display: 'flex', border: '1px solid red', height: '100%' }}>
-          <div style={{ border: '1px solid blue', flex: 1 }}>왼쪽</div>
-          <div style={{ border: '1px solid orange', flex: 2 }}>오른쪽</div>
+        <div style={{ display: 'flex', height: '100%' }}>
+          <div style={{ flex: 1 }}>
+            {memberSelect.map((select) => {
+              return (
+                <div
+                  style={{
+                    padding: '18px 22px',
+                    color: selectMain.text === select.text ? theme.colors.b2 : theme.colors.ba,
+                    background: selectMain.text === select.text ? theme.colors.w1 : theme.colors.bg1,
+                  }}
+                  onClick={() => setSelectMain(select)}
+                >
+                  <Text font={theme.typography.suit14m}>{select.text}</Text>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ flex: 2 }}>
+            <CheckBoxModal options={modalCheckboxOptions[0]?.options} onChange={handleModalCheckboxChange} />
+          </div>
         </div>
       </BottomSheet>
     </div>
