@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 // ----> image, svg
 import BottomBg from '../assets/images/bottom_bg.png';
 import { ReactComponent as ActiveFeed } from '../assets/svg/active_feed.svg';
+import { ReactComponent as ActiveProfile } from '../assets/svg/active_profile.svg';
 import { ReactComponent as Feed } from '../assets/svg/feed.svg';
 import { ReactComponent as Profile } from '../assets/svg/profile.svg';
 import { ReactComponent as Icon } from '../assets/svg/writeicon24.svg';
@@ -23,8 +25,8 @@ const Navigation = () => {
           <Icon />
         </NavCenterItem>
         {/* <NavItem>글쓰기</NavItem> */}
-        <NavItem>
-          <Profile />
+        <NavItem onClick={() => navigate('/profile')}>
+          {location.pathname.startsWith('/profile') ? <ActiveProfile /> : <Profile />}
           <NavItemText>프로필</NavItemText>
         </NavItem>
       </NavWrapper>
