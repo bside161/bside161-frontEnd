@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import MobileView from './layouts/MobileView';
 import Components from './pages/Components.page.tsx';
+
 import Feed from './pages/feed/Feed.page';
 import Feeds from './pages/feed/Feeds.page';
 import Login from './pages/Login.tsx';

@@ -197,7 +197,7 @@ const Components = () => {
             padding: 20,
           }}
         >
-          <div>콘텐츠부분</div>
+          <div>콘텐츠부분!</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 7, marginBottom: 50 }}>
             <Button style={{ flex: 1 }} text={'닫기'} onClick={toggleBottomSheet} isActive={false} />
             <Button style={{ flex: 2 }} text={'적용'} onClick={buttonClick} isActive={true} />
