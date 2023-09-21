@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 
 import { ReactComponent as Filter } from '../../assets/svg/filter.svg';
+import { ReactComponent as Logo } from '../../assets/svg/main_logo.svg';
 import { ReactComponent as Write } from '../../assets/svg/writeicon40.svg';
 import BottomSheet from '../../components/BottomSheet/BottomSheet';
 import FilterBox from '../../components/BottomSheet/FilterBox';
@@ -13,9 +14,10 @@ import { Header } from '../../components/Header/Header';
 import Checkbox, { checkboxOptions } from '../../components/Inputs/Checkbox';
 import Dropdown from '../../components/Inputs/Dropdown/Dropdown';
 import Radio, { radioOptions } from '../../components/Inputs/Radio';
-import NonStyleButton from '../../components/NonStyleButton';
+import Padding from '../../components/Padding';
 import Spacer from '../../components/Spacer';
 import Text from '../../components/Text';
+import UnStyleButton from '../../components/UnStyleButton';
 import { filterOptions, filterSubOptions, filterRadio } from '../../modules/constants';
 
 // 아이디어
@@ -70,14 +72,12 @@ const Feeds = () => {
     <>
       <Header main>
         <Header.Item>
-          <Text font={theme.typography.suit22r} color={theme.colors.w1}>
-            CONCEPTBE
-          </Text>
+          <Logo />
         </Header.Item>
         <Header.Item>
-          <NonStyleButton onClick={() => setIsFilter(true)}>
+          <UnStyleButton onClick={() => setIsFilter(true)}>
             <Filter />
-          </NonStyleButton>
+          </UnStyleButton>
         </Header.Item>
       </Header>
 
@@ -103,8 +103,6 @@ const Feeds = () => {
         </FeedFixBox>
 
         <FeedBox>
-          <Spacer top={16} />
-
           <FeedWrapper>
             <Text font={theme.typography.suit16sb}>현재 인기 있는 아이디어</Text>
             <Spacer top={18} />
@@ -114,7 +112,6 @@ const Feeds = () => {
               })}
             </FeedFixWrapper>
           </FeedWrapper>
-          <Spacer top={40} />
 
           <FeedWrapper>
             <Text font={theme.typography.suit16sb}>피드 영역 타이틀입니다</Text>
@@ -123,6 +120,7 @@ const Feeds = () => {
               <IdeaCard key={idx} tags={tags} />
             ))}
           </FeedWrapper>
+          <Padding bottom={80} />
         </FeedBox>
       </Wrapper>
 
@@ -214,10 +212,12 @@ const FeedFixTextWrapper = styled.div`
 const FeedBox = styled.div`
   background-color: ${(props) => props.theme.colors.w1};
   border-radius: 16px 16px 0 0;
-  padding: 29px 22px 80px 22px;
+  padding: 0 22px;
 `;
 
-const FeedWrapper = styled.div``;
+const FeedWrapper = styled.div`
+  padding-top: 40px;
+`;
 
 const FilterContent = styled.div`
   display: flex;
