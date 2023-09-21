@@ -4,12 +4,13 @@ import { ReactNode, CSSProperties } from 'react';
 interface TextProps {
   children: ReactNode;
   font: CSSProperties;
+  style?: CSSProperties;
   color?: string;
 }
 
-const Text = ({ children, font, color }: TextProps) => {
+const Text = ({ children, font, color, style }: TextProps) => {
   return (
-    <TextBox color={color} style={{ ...font }}>
+    <TextBox color={color} style={{ ...font, ...style }}>
       {children}
     </TextBox>
   );

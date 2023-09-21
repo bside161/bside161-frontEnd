@@ -52,7 +52,6 @@ const typography = {
   suit15rb: {
     fontSize: 15,
     fontWeight: 400,
-    lineHeight: 24,
   },
   suit15m: {
     fontSize: 15,

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { Outlet } from 'react-router-dom';
+
 import Navigation from '../components/Navigation';
+import Spacer from '../components/Spacer';
 
 const MobileView = () => {
   return (
@@ -19,7 +21,6 @@ const Container = styled.main`
   height: 100%;
   max-width: 480px;
   width: auto;
-  position: relative;
   margin: 0 auto;
   min-height: 100%;
   overflow: hidden;
@@ -27,8 +28,8 @@ const Container = styled.main`
 `;
 
 const Wrapper = styled.div`
-  /* height: calc(100% - 30px); */
-  height: 100%;
+  height: calc(100% - 20px);
+  /* height: 100%; */
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

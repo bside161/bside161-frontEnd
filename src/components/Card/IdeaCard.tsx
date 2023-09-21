@@ -1,5 +1,6 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+
 import { ReactComponent as Comment } from '../../assets/svg/comment_14.svg';
 import { ReactComponent as Profile } from '../../assets/svg/default_profile.svg';
 import { ReactComponent as Like } from '../../assets/svg/like_14.svg';
@@ -7,10 +8,9 @@ import { ReactComponent as UnScrap } from '../../assets/svg/scrap.svg';
 import { ReactComponent as ScrapView } from '../../assets/svg/scrap_14.svg';
 // footer
 import { ReactComponent as View } from '../../assets/svg/view_14.svg';
-import Tag, { TagProps } from '../Tag.tsx';
-
-import Text from '../Text.tsx';
 import Spacer from '../Spacer.tsx';
+import Tag, { TagProps } from '../Tag.tsx';
+import Text from '../Text.tsx';
 
 const IdeaCard = ({ tags }: TagProps) => {
   const theme = useTheme();
@@ -72,6 +72,7 @@ const CardContainer = styled.div`
   padding: 30px 20px;
   border-radius: 8px;
   box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.08);
+  background-color: ${({ theme }) => theme.colors.w1};
 `;
 
 const ProfileWrapper = styled.div`
