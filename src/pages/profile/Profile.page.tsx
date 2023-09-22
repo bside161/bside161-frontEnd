@@ -1,5 +1,6 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useState } from 'react';
 
 import { ReactComponent as Logo } from '../../assets/svg/main_logo.svg';
 import { ReactComponent as Setting } from '../../assets/svg/setting.svg';
@@ -7,6 +8,9 @@ import IdeaCard from '../../components/Card/IdeaCard';
 import { Header } from '../../components/Header/Header';
 import Padding from '../../components/Padding';
 import Spacer from '../../components/Spacer';
+import Tab from '../../components/Tab/Tab';
+import TabPannel from '../../components/Tab/TabPannel';
+import Tabs from '../../components/Tab/Tabs';
 import Tag from '../../components/Tag';
 import Text from '../../components/Text';
 import UnStyleButton from '../../components/UnStyleButton';
@@ -16,6 +20,12 @@ const tags = ['사이드 프로젝트', '크라우드 펀딩', '공모전'];
 
 const Profile = () => {
   const theme = useTheme();
+  const [activeTab, setAtiveTab] = useState(0);
+
+  const handleTab = (event: any, newValue: any) => {
+    setAtiveTab(newValue);
+  };
+
   return (
     <ProfileContainer>
       <Header main>
@@ -79,36 +89,20 @@ const Profile = () => {
           </div>
           {/* tab */}
         </ProfileBox>
-        <div style={{ display: 'flex', background: theme.colors.w1 }}>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: 15,
-              width: '100%',
-              borderBottom: '2px solid black',
-            }}
-          >
-            아이디어
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 15, width: '100%' }}>
-            북마크
-          </div>
-        </div>
-        <div
-          style={{
-            padding: '30px 20px 80px 20px',
-            background: theme.colors.bg1,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20,
-          }}
-        >
-          {Array.from({ length: 20 }, (_, idx) => (
-            <IdeaCard key={idx} tags={tags} />
-          ))}
-        </div>
+        <Tabs value={activeTab} onChange={handleTab}>
+          <Tab>아이디어</Tab>
+          <Tab>북마크</Tab>
+        </Tabs>
+        <TabPannel value={activeTab} active={0}>
+          <TabPannelBox>
+            {Array.from({ length: 20 }, (_, idx) => (
+              <IdeaCard key={idx} tags={tags} />
+            ))}
+          </TabPannelBox>
+        </TabPannel>
+        <TabPannel value={activeTab} active={1}>
+          <TabPannelBox>북마크입니다~</TabPannelBox>
+        </TabPannel>
       </ProfileWrapper>
     </ProfileContainer>
   );
@@ -143,12 +137,6 @@ const ProfileBox = styled.div`
   border-radius: 16px 16px 0 0;
   padding: 35px 22px;
   background-color: ${(props) => props.theme.colors.w1};
-  /* position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  padding: 35px 22px; */
 `;
 
 const ProfileMainBox = styled.div`
@@ -162,4 +150,12 @@ const TagWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+`;
+
+const TabPannelBox = styled.div`
+  padding: 30px 20px 80px 20px;
+  background-color: ${({ theme }) => theme.colors.bg1};
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;

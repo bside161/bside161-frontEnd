@@ -20,7 +20,7 @@ export default MobileView;
 const Container = styled.main`
   height: 100%;
   //피그마 크기인 375px로 조정했습니다. 확인 후 주석은 지우셔도 됩니다~
-  max-width: 375px;
+  max-width: 480px;
   width: auto;
   margin: 0 auto;
   min-height: 100%;
