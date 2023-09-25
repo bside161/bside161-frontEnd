@@ -22,6 +22,7 @@ const IdeaCard = ({ tags }: TagProps) => {
           <div>
             <Text font={theme.typography.suit14m}>일이삼사오육칠팔구</Text>
             <Spacer top={4} />
+
             <Text font={theme.typography.suit12m} color={theme.colors.b9}>
               스킬 | 작성시간
             </Text>
@@ -109,9 +110,6 @@ const ContentText = styled.div`
 const TagWrapper = styled.div`
   padding-top: 6px;
   padding-bottom: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
 `;
 
 const FooterWrapper = styled.div`

@@ -3,6 +3,7 @@ const colors = {
   c2: '#0DE361',
   bg1: '#F5F6F8',
   b: '#000000',
+  t: '#666',
   b2: 'rgba(0, 0, 0, 0.87)',
   b4: 'rgba(0, 0, 0, 0.73)',
   b6: 'rgba(0, 0, 0, 0.60)',
@@ -23,6 +24,10 @@ const typography = {
   suit12m: {
     fontSize: 12,
     fontWeight: 500,
+  },
+  suit12b: {
+    fontSize: 12,
+    fontWeight: 700,
   },
   suit13m: {
     fontSize: 13,
