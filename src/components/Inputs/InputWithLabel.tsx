@@ -7,15 +7,14 @@ interface InputProps {
   placeholder: string;
   limit: number;
   isValid: boolean;
+  message?: string;
+  hideMessage?: boolean;
   onChange: (value: string) => void;
 }
 
-const InputWithLabel = ({ label, limit, value, placeholder, isValid, onChange }: InputProps) => {
+const InputWithLabel = ({ label, limit, value, placeholder, isValid, message, hideMessage, onChange }: InputProps) => {
   const [count, setCount] = useState(0);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (count >= limit) {
-      return;
-    }
     setCount(e.target.value.length);
     onChange(e.target.value);
   };
@@ -29,8 +28,8 @@ const InputWithLabel = ({ label, limit, value, placeholder, isValid, onChange }:
         </TextLimit>
       </LabelWrapper>
 
-      <Input type="text" value={value} onChange={handleChange} placeholder={placeholder} />
-      <ValidMessage isValid={isValid}>유효성 검사 메세지</ValidMessage>
+      <Input type="text" value={value} onChange={handleChange} placeholder={placeholder} maxLength={limit} />
+      {!hideMessage && <ValidMessage isValid={isValid}>{message}</ValidMessage>}
     </div>
   );
 };

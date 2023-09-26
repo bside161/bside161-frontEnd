@@ -11,8 +11,9 @@ export const globalStyles = css`
     margin: 0;
     display: flex;
     place-items: center;
-    min-width: 320px;
+    /* min-width: 320px; */
     min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 
   * {
