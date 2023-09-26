@@ -20,9 +20,7 @@ export default MobileView;
 
 const Container = styled.main`
   height: 100%;
-
   max-width: 480px;
-  max-width: 375px;
   width: auto;
   margin: 0 auto;
   min-height: 100%;

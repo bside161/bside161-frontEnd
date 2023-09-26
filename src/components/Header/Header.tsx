@@ -6,10 +6,18 @@ import { Item } from './Item';
 interface HeaderProps {
   children: ReactNode;
   main?: boolean;
+  emptyStart?: boolean;
+  emptyEnd?: boolean;
 }
 
-const Header = ({ children, main }: HeaderProps) => {
-  return <Container main={main}>{children}</Container>;
+const Header = ({ children, main, emptyStart, emptyEnd }: HeaderProps) => {
+  return (
+    <Container main={main}>
+      {emptyStart && <EmptyBox />}
+      {children}
+      {emptyEnd && <EmptyBox />}
+    </Container>
+  );
 };
 
 Header.Item = Item;
@@ -26,4 +34,9 @@ const Container = styled.header<{ main?: boolean }>`
   position: sticky;
   top: 0;
   z-index: 1;
+`;
+
+const EmptyBox = styled.div`
+  width: 24px;
+  height: 24px;
 `;
