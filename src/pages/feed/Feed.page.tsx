@@ -1,14 +1,18 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useState } from 'react';
 
 import HeaderLogo from '../../assets/images/header_logo.png';
 import { ReactComponent as Back } from '../../assets/svg/back_24.svg';
+import { ReactComponent as Dots } from '../../assets/svg/FeedDetail/dots_vertical.svg';
 import { ReactComponent as Like } from '../../assets/svg/FeedDetail/like.svg';
+import { ReactComponent as Message } from '../../assets/svg/FeedDetail/Message.svg';
+import { ReactComponent as Pencil } from '../../assets/svg/FeedDetail/pencil.svg';
 import { ReactComponent as ReCommnetLine } from '../../assets/svg/FeedDetail/ReCommnetLine.svg';
 import { ReactComponent as Scrap } from '../../assets/svg/FeedDetail/scrap.svg';
-import { ReactComponent as SpeechBubble } from '../../assets/svg/FeedDetail/speechBubble.svg';
 import { ReactComponent as UnLike } from '../../assets/svg/FeedDetail/unLike.svg';
 import { ReactComponent as UnScrap } from '../../assets/svg/FeedDetail/unScrap.svg';
+import { ReactComponent as X } from '../../assets/svg/FeedDetail/x.svg';
 import Divider from '../../components/Divider';
 import { Header } from '../../components/Header/Header';
 import ProfileComponent from '../../components/Profile';
@@ -26,11 +30,40 @@ const FeedDetailPage = () => {
     { indexName: '모집 지역', tag: '서울특별시' },
     { indexName: '팀원모집', tag: ['서비스기획23', '서비스기5획', '서비기획', '서비스fdsa기획', '서비획'] },
   ];
+
+  const [isClickDots, setIsClickDots] = useState(false);
+
+  const onClickDots = () => {
+    setIsClickDots(!isClickDots);
+  };
+
   return (
     <>
       <Header main>
         <Back />
         <Handler_logo src={HeaderLogo} />
+        <DotsBox>
+          <Dots onClick={onClickDots} />
+          {isClickDots && (
+            <DropDownBox>
+              <DropDownSelect>
+                <Text font={theme.typography.suit12r} color={theme.colors.b6}>
+                  수정하기
+                </Text>
+                <Pencil />
+              </DropDownSelect>
+
+              <Divider color={theme.colors.bg1} height={0.1} />
+
+              <DropDownSelect>
+                <Text font={theme.typography.suit12r} color={theme.colors.b6}>
+                  삭제하기
+                </Text>
+                <X />
+              </DropDownSelect>
+            </DropDownBox>
+          )}
+        </DotsBox>
       </Header>
       <ContantWrapper>
         <ProfileComponent />
@@ -75,7 +108,6 @@ const FeedDetailPage = () => {
 
       <InfoWrapper>
         {infoIndex.map((item, idx) => {
-          console.log(typeof item.tag);
           return (
             <div key={idx}>
               {typeof item.tag === 'string' ? (
@@ -100,7 +132,7 @@ const FeedDetailPage = () => {
         <Divider color={theme.colors.l3} />
         <InfoBottomBox>
           <IndexBox>
-            <SpeechBubble />
+            <Message />
             <Text font={theme.typography.suit12r} color={theme.colors.b9}>
               댓글
             </Text>
@@ -134,6 +166,7 @@ const FeedDetailPage = () => {
       <CommentWrapper>
         <InputBox>
           <Input placeholder="댓글을 입력해 주세요." />
+          {/* <Textarea placeholder="Your message here..." value={textareaValue} onChange={handleTextareaChange} /> */}
         </InputBox>
 
         <Spacer top={20} />
@@ -149,7 +182,7 @@ const FeedDetailPage = () => {
           <Spacer top={10} />
           <CommnetsBottomBox>
             <IndexBox>
-              <SpeechBubble />
+              <Message />
               <Text font={theme.typography.suit12r} color={theme.colors.b9}>
                 댓글
               </Text>
@@ -207,9 +240,32 @@ const Handler_logo = styled.img`
   width: 176px;
   height: 24px;
   position: absolute;
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+const DotsBox = styled.div`
+  position: relative;
+`;
+
+const DropDownBox = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: ${(props) => props.theme.colors.w1};
+  width: 88px;
+  height: 70px;
+  border-radius: 6px;
+  padding: 10.5px 10px;
+  translate: -67px 2px;
+`;
+const DropDownSelect = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 // ContantWrapper
@@ -245,10 +301,11 @@ const IndexBox = styled.div`
 // CommentWrapper
 const CommentWrapper = styled.div`
   padding: 20px 22px 20px 22px;
-  height: 1000px;
 `;
 
-const InputBox = styled.div``;
+const InputBox = styled.div`
+  position: relative;
+`;
 
 const Input = styled.input`
   border-radius: 6px;
@@ -261,6 +318,20 @@ const Input = styled.input`
   ::placeholder {
     color: ${(props) => props.theme.colors.ba};
   }
+`;
+
+const Textarea = styled.textarea`
+  background-color: ${(props) => props.theme.colors.bg1};
+  resize: none;
+  outline: none;
+  border: none;
+  width: 100%;
+
+  height: 88px;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 50px 20px;
+  margin: 0px;
 `;
 
 const CommentsBox = styled.div`

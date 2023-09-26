@@ -5,6 +5,7 @@ import Navigation from '../components/Navigation';
 import Spacer from '../components/Spacer';
 
 const MobileView = () => {
+  const patname = window.location.pathname;
   return (
     <Container>
       <Wrapper>
