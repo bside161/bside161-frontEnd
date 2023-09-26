@@ -87,8 +87,8 @@ const Profile = () => {
               <Tag tags={tags} />
             </TagWrapper>
           </div>
-          {/* tab */}
         </ProfileBox>
+        {/* tab */}
         <Tabs value={activeTab} onChange={handleTab}>
           <Tab>아이디어</Tab>
           <Tab>북마크</Tab>
@@ -101,7 +101,11 @@ const Profile = () => {
           </TabPannelBox>
         </TabPannel>
         <TabPannel value={activeTab} active={1}>
-          <TabPannelBox>북마크입니다~</TabPannelBox>
+          <TabPannelBox>
+            {Array.from({ length: 20 }, (_, idx) => (
+              <IdeaCard key={idx} tags={tags} />
+            ))}
+          </TabPannelBox>
         </TabPannel>
       </ProfileWrapper>
     </ProfileContainer>
