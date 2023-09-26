@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../assets/svg/main_logo.svg';
 import { ReactComponent as Setting } from '../../assets/svg/setting.svg';
@@ -20,6 +21,7 @@ const tags = ['사이드 프로젝트', '크라우드 펀딩', '공모전'];
 
 const Profile = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [activeTab, setAtiveTab] = useState(0);
 
   const handleTab = (event: any, newValue: any) => {
@@ -33,7 +35,7 @@ const Profile = () => {
           <Logo />
         </Header.Item>
         <Header.Item>
-          <UnStyleButton>
+          <UnStyleButton onClick={() => navigate('/profile/1')}>
             <Setting />
           </UnStyleButton>
         </Header.Item>

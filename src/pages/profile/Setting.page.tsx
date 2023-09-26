@@ -40,7 +40,7 @@ const Setting = () => {
         </Header.Item>
       </Header>
       <MainWrapper>
-        이쪽이 바로 보여지는쪽
+        <div style={{ height: 50 }} />
         <MainBox>
           {/* <Default /> */}
           <ImageWrapper>
