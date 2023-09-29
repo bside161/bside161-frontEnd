@@ -15,15 +15,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/landing" element={<MainLanding />} />
         <Route element={<MobileView />}>
           <Route path="" element={<TestPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/landing" element={<MainLanding />} />
           <Route path="/feed" element={<Feeds />} />
           <Route path="/feed/:id" element={<Feed />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:id" element={<Setting />} />
-          <Route path="/profile/more" element={<More />} />
+          <Route path="/profile/:id/more" element={<More />} />
           <Route path="/components" element={<Components />} />
         </Route>
       </Routes>

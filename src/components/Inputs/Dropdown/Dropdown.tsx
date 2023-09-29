@@ -1,25 +1,44 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
-import { ReactComponent as Arrow } from '../../../assets/svg/arrow.svg';
+import { useState, useEffect, useRef } from 'react';
+
 import Panel, { Item } from './Panel.tsx';
+import { ReactComponent as Arrow } from '../../../assets/svg/arrow.svg';
 
 interface DropdownProps {
   items: Item[];
   initialValue: string;
   onClick: (value: string) => void;
+  disabled?: boolean;
 }
 
-const Dropdown = ({ items, initialValue, onClick }: DropdownProps) => {
+const Dropdown = ({ items, initialValue, onClick, disabled }: DropdownProps) => {
+  const containerRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [selectedText, setSelectedText] = useState(initialValue);
+
   const toggleActive = () => {
     setIsActive(!isActive);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setIsActive(false);
+      }
+    };
+    // Attach the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      // Cleanup on component unmount
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <DropdownWrapper>
-      <Trigger onClick={toggleActive}>
-        {selectedText} <ArrowIcon isActive={isActive} />
+    <DropdownWrapper ref={containerRef} onBlur={() => setIsActive(false)}>
+      <Trigger disabled={disabled} onClick={!disabled ? toggleActive : () => {}}>
+        {selectedText} <ArrowIcon disabled={disabled} isActive={isActive} />
       </Trigger>
       {isActive && (
         <Panel onClick={onClick} toggleActive={toggleActive} setSelectedText={setSelectedText} items={items} />
@@ -34,12 +53,13 @@ const DropdownWrapper = styled.div`
   position: relative;
 `;
 
-const ArrowIcon = styled(Arrow)<{ isActive: boolean }>`
+const ArrowIcon = styled(Arrow)<{ isActive: boolean; disabled?: boolean }>`
   transform: ${({ isActive }) => (isActive ? 'rotate(180deg)' : 'rotate(0)')};
 `;
 
-const Trigger = styled.div`
+const Trigger = styled.div<{ disabled?: boolean }>`
   display: flex;
+  user-select: none;
   justify-content: space-between;
   align-items: center;
   padding: 11px 15px 12px;
@@ -47,8 +67,9 @@ const Trigger = styled.div`
   font-weight: 500;
   box-sizing: border-box;
   gap: 10px;
-  color: ${({ theme }) => theme.colors.b4};
+  background-color: ${({ theme, disabled }) => (disabled ? theme.colors.l2 : theme.colors.w1)};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.l2 : theme.colors.b4)};
   border: 1px solid ${({ theme }) => theme.colors.l2};
   border-radius: 6px;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? 'none' : 'pointer')};
 `;

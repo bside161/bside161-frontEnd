@@ -36,7 +36,6 @@ const typography = {
   suit14r: {
     fontSize: 14,
     fontWeight: 400,
-    lineHeight: 22,
   },
   suit14m: {
     fontSize: 14,

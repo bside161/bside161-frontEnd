@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useMatch } from 'react-router-dom';
 
 import Navigation from '../components/Navigation';
 import Spacer from '../components/Spacer';
 
 const MobileView = () => {
-  const patname = window.location.pathname;
+  const matchRoute = useMatch('/profile/:id');
   return (
     <Container>
       <Wrapper>
         <Outlet />
       </Wrapper>
-      <Navigation />
+      {!matchRoute && <Navigation />}
     </Container>
   );
 };
@@ -29,8 +29,8 @@ const Container = styled.main`
 `;
 
 const Wrapper = styled.div`
-  height: calc(100% - 20px);
-  /* height: 100%; */
+  /* height: calc(100% - 20px); */
+  height: 100%;
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

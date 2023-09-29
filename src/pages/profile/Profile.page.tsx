@@ -35,7 +35,7 @@ const Profile = () => {
           <Logo />
         </Header.Item>
         <Header.Item>
-          <UnStyleButton onClick={() => navigate('/profile/1')}>
+          <UnStyleButton onClick={() => navigate(`/profile/1/more`)}>
             <Setting />
           </UnStyleButton>
         </Header.Item>
@@ -62,7 +62,10 @@ const Profile = () => {
               </Text>
             </div>
             <EditButton>
-              <UnStyleButton style={{ border: `1px solid ${theme.colors.l2}`, borderRadius: 100, padding: '8px 14px' }}>
+              <UnStyleButton
+                onClick={() => navigate(`/profile/1`)}
+                style={{ border: `1px solid ${theme.colors.l2}`, borderRadius: 100, padding: '8px 14px' }}
+              >
                 프로필 수정
               </UnStyleButton>
             </EditButton>
@@ -86,7 +89,7 @@ const Profile = () => {
             <Text font={theme.typography.suit14m}>목적</Text>
             <Spacer top={10} />
             <TagWrapper>
-              <Tag tags={tags} />
+              <Tag style={{ color: theme.colors.b4 }} tags={tags} />
             </TagWrapper>
           </div>
         </ProfileBox>
@@ -98,7 +101,7 @@ const Profile = () => {
         <TabPannel value={activeTab} active={0}>
           <TabPannelBox>
             {Array.from({ length: 20 }, (_, idx) => (
-              <IdeaCard key={idx} tags={tags} />
+              <IdeaCard mine key={idx} tags={tags} />
             ))}
           </TabPannelBox>
         </TabPannel>
