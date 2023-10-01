@@ -50,6 +50,7 @@ const PanelWrapper = styled.ul`
   border-radius: 6px;
   max-height: 100px;
   overflow: scroll;
+  z-index: 1;
 `;
 
 const PanelItem = styled.li`
