@@ -16,6 +16,22 @@ export const globalStyles = css`
     min-height: -webkit-fill-available;
   }
 
+  input {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+  }
+  textarea {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    resize: none;
+    border: none;
+    outline: none;
+  }
+
   * {
     font-family: 'SUIT Variable', sans-serif;
   }

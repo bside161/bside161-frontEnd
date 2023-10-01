@@ -7,7 +7,7 @@ interface IDivider {
   height?: number;
 }
 
-const Divider = ({ top, bottom, color, height }: IDivider) => {
+const Divider = ({ top = 0, bottom = 0, color, height = 1 }: IDivider) => {
   return <SpacerBox top={top} bottom={bottom} color={color} height={height} />;
 };
 
@@ -18,9 +18,6 @@ const SpacerBox = styled.hr<IDivider>`
   height: ${(props) => props.height}px;
   margin-top: ${(props) => props.top}px;
   margin-bottom: ${(props) => props.bottom}px;
-  border-top-color: ${(props) => (props.color ? props.color : props.theme.colors.b)};
-  border-right-color: ${(props) => (props.color ? props.color : props.theme.colors.b)};
-  border-bottom-color: ${(props) => (props.color ? props.color : props.theme.colors.b)};
-  border-left-color: ${(props) => (props.color ? props.color : props.theme.colors.b)};
+  border: none;
   background-color: ${(props) => (props.color ? props.color : props.theme.colors.b)};
 `;

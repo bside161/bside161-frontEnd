@@ -2,7 +2,7 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 
-import { ReactComponent as Back } from '../../assets/svg/back_24.svg';
+import { ReactComponent as Back } from '../../assets/svg/back_24_B.svg';
 import { ReactComponent as Default } from '../../assets/svg/default_profile.svg';
 import { ReactComponent as Write } from '../../assets/svg/image_write.svg';
 import { Header } from '../../components/Header/Header';

@@ -10,6 +10,7 @@ import More from './pages/profile/More.page.tsx';
 import Profile from './pages/profile/Profile.page.tsx';
 import Setting from './pages/profile/Setting.page.tsx';
 import TestPage from './pages/Test.page';
+import Write from './pages/Write.tsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/landing" element={<MainLanding />} />
           <Route path="/feed" element={<Feeds />} />
           <Route path="/feed/:id" element={<Feed />} />
+          <Route path="/write" element={<Write />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:id" element={<Setting />} />
           <Route path="/profile/more" element={<More />} />

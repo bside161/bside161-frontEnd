@@ -23,7 +23,7 @@ export default Tag;
 const TagWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8 px;
 `;
 const StyledTag = styled.div<{ select: boolean }>`
   background-color: ${({ theme, select }) => (select ? theme.colors.c1 : theme.colors.bg1)};

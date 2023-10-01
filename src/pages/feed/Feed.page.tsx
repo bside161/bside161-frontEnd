@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 
 import HeaderLogo from '../../assets/images/header_logo.png';
-import { ReactComponent as Back } from '../../assets/svg/back_24.svg';
+import { ReactComponent as Back } from '../../assets/svg/back_24_W.svg';
 import { ReactComponent as Dots } from '../../assets/svg/FeedDetail/dots_vertical.svg';
 import { ReactComponent as Like } from '../../assets/svg/FeedDetail/like.svg';
 import { ReactComponent as Message } from '../../assets/svg/FeedDetail/Message.svg';
@@ -12,7 +12,8 @@ import { ReactComponent as ReCommnetLine } from '../../assets/svg/FeedDetail/ReC
 import { ReactComponent as Scrap } from '../../assets/svg/FeedDetail/scrap.svg';
 import { ReactComponent as UnLike } from '../../assets/svg/FeedDetail/unLike.svg';
 import { ReactComponent as UnScrap } from '../../assets/svg/FeedDetail/unScrap.svg';
-import { ReactComponent as X } from '../../assets/svg/FeedDetail/x.svg';
+import { ReactComponent as Logo } from '../../assets/svg/main_logo.svg';
+import { ReactComponent as X } from '../../assets/svg/x.svg';
 import Divider from '../../components/Divider';
 import { Header } from '../../components/Header/Header';
 import ProfileComponent from '../../components/Profile';
@@ -41,7 +42,7 @@ const FeedDetailPage = () => {
     <>
       <Header main>
         <Back />
-        <Handler_logo src={HeaderLogo} />
+        <Logo />
         <DotsBox>
           <Dots onClick={onClickDots} />
           {isClickDots && (
@@ -235,16 +236,6 @@ const FeedDetailPage = () => {
 };
 
 export default FeedDetailPage;
-
-const Handler_logo = styled.img`
-  width: 176px;
-  height: 24px;
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
 
 const DotsBox = styled.div`
   position: relative;
