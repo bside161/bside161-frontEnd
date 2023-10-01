@@ -2,19 +2,16 @@ import styled from '@emotion/styled';
 import { Outlet, useMatch } from 'react-router-dom';
 
 import Navigation from '../components/Navigation';
-import Spacer from '../components/Spacer';
+import useRouteMatched from '../hooks/useRouteMatch';
 
 const MobileView = () => {
-  const settingMatch = useMatch('/profile/:id');
-  const loginMatch = useMatch('/login');
-
-  const matchRoute = settingMatch || loginMatch;
+  const isMatch = useRouteMatched('/profile/:id', '/login', '/write');
   return (
     <Container>
       <Wrapper>
         <Outlet />
       </Wrapper>
-      {!matchRoute && <Navigation />}
+      {!isMatch && <Navigation />}
     </Container>
   );
 };
