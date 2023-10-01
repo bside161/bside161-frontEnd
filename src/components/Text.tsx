@@ -20,4 +20,5 @@ export default Text;
 
 const TextBox = styled.p<{ color?: string }>`
   color: ${(props) => (props.color ? props.color : props.theme.colors.b)};
+  user-select: none;
 `;
