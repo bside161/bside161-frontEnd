@@ -42,11 +42,14 @@ const PanelWrapper = styled.ul`
   left: 0;
   bottom: 0;
   transform: translateY(calc(100% + 5px));
-  z-index: 100;
+  /* z-index: 100; */
+  width: -webkit-fill-available;
 
   background-color: ${({ theme }) => theme.colors.w1};
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 6px;
+  max-height: 100px;
+  overflow: scroll;
 `;
 
 const PanelItem = styled.li`

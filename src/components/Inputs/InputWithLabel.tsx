@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { ChangeEvent, useState } from 'react';
 
 interface InputProps {
+  multiline?: boolean;
   label: string;
   value: string;
   placeholder: string;
@@ -12,7 +13,17 @@ interface InputProps {
   onChange: (value: string) => void;
 }
 
-const InputWithLabel = ({ label, limit, value, placeholder, isValid, message, hideMessage, onChange }: InputProps) => {
+const InputWithLabel = ({
+  multiline = false,
+  label,
+  limit,
+  value,
+  placeholder,
+  isValid,
+  message,
+  hideMessage,
+  onChange,
+}: InputProps) => {
   const [count, setCount] = useState(0);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCount(e.target.value.length);
@@ -28,7 +39,11 @@ const InputWithLabel = ({ label, limit, value, placeholder, isValid, message, hi
         </TextLimit>
       </LabelWrapper>
 
-      <Input type="text" value={value} onChange={handleChange} placeholder={placeholder} maxLength={limit} />
+      {multiline ? (
+        <TextArea value={value} onChange={handleChange} placeholder={placeholder} maxLength={limit} />
+      ) : (
+        <Input type="text" value={value} onChange={handleChange} placeholder={placeholder} maxLength={limit} />
+      )}
       {!hideMessage && <ValidMessage isValid={isValid}>{message}</ValidMessage>}
     </div>
   );
@@ -37,7 +52,7 @@ const InputWithLabel = ({ label, limit, value, placeholder, isValid, message, hi
 export default InputWithLabel;
 
 const LabelWrapper = styled.div`
-  position: relative;
+  /* position: relative; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,6 +77,24 @@ const Count = styled.span`
 const Input = styled.input`
   box-sizing: border-box;
   width: 100%;
+  border-radius: 6px;
+  padding: 11px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid ${({ theme }) => theme.colors.l2};
+  outline: none;
+  color: ${({ theme }) => theme.colors.b4};
+  background: ${({ theme }) => theme.colors.w1};
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.c1};
+  }
+`;
+
+const TextArea = styled.textarea`
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
   border-radius: 6px;
   padding: 11px 16px;
   font-size: 14px;

@@ -1,35 +1,67 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import {
+  Container,
+  ImageWrapper,
+  ImageBox,
+  Img,
+  ImageWrite,
+  SettingBox,
+  SettingWrapper,
+  MainBox,
+  MainWrapper,
+  BottomWrapper,
+} from './Setting.style';
 import { ReactComponent as Back } from '../../assets/svg/back_24_B.svg';
 import { ReactComponent as Default } from '../../assets/svg/default_profile.svg';
 import { ReactComponent as Write } from '../../assets/svg/image_write.svg';
+import Button from '../../components/Button';
 import { Header } from '../../components/Header/Header';
+import Checkbox, { checkboxOptions } from '../../components/Inputs/Checkbox';
 import Dropdown from '../../components/Inputs/Dropdown/Dropdown';
 import InputWithLabel from '../../components/Inputs/InputWithLabel';
 import Spacer from '../../components/Spacer';
 import Text from '../../components/Text';
 import UnStyleButton from '../../components/UnStyleButton';
+import { skillOneDepth, skillTwoDepth, filterSubOptions, regionOptions } from '../../modules/constants';
 
 const dropdownItems = [
-  { value: '1', text: 'Dropdown item1 asdasddas' },
-  { value: '2', text: 'Dropdown item2' },
+  { value: '상', text: '상' },
+  { value: '중', text: '중' },
+  { value: '하', text: '하' },
 ];
 
 const Setting = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [input, setInput] = useState('');
+  const [oneDepth, setOneDepth] = useState('');
+  const [twoDepth, setTwoDepth] = useState('');
+  const [purposeOptions, setPurposeOptions] = useState<checkboxOptions[] | []>([...filterSubOptions]); // 목적
+  const [resion, setResion] = useState('');
 
   const handleDropdownClick = (value: string) => {
     console.log(value);
+  };
+
+  const handleCheckboxChange = (
+    value: string,
+    newState: boolean,
+    setState: React.Dispatch<React.SetStateAction<checkboxOptions[]>>,
+  ) => {
+    setState((prevCheckboxes) =>
+      prevCheckboxes.map((checkbox) => (checkbox.value === value ? { ...checkbox, checked: !newState } : checkbox)),
+    );
   };
 
   return (
     <Container>
       <Header main emptyEnd>
         <Header.Item>
-          <UnStyleButton>
+          <UnStyleButton style={{ color: theme.colors.w1 }} onClick={() => navigate(-1)}>
             <Back />
           </UnStyleButton>
         </Header.Item>
@@ -39,8 +71,9 @@ const Setting = () => {
           </Text>
         </Header.Item>
       </Header>
+
       <MainWrapper>
-        <div style={{ height: 50 }} />
+        <div style={{ height: 20 }} />
         <MainBox>
           {/* <Default /> */}
           <ImageWrapper>
@@ -61,64 +94,69 @@ const Setting = () => {
             hideMessage={true}
             onChange={(value) => setInput(value)}
           />
+
           <Spacer top={35} />
-          <div style={{ display: 'flex', gap: 8 }}>
-            <Dropdown onClick={handleDropdownClick} items={dropdownItems} initialValue={'대분류'} />
-            <Dropdown onClick={handleDropdownClick} items={dropdownItems} initialValue={'상세분류'} />
-            <Dropdown onClick={handleDropdownClick} items={dropdownItems} initialValue={'숙련도'} />
-          </div>
+          <SettingWrapper>
+            <Text font={theme.typography.suit15m} color={theme.colors.b9}>
+              스킬 (최대 3개)
+            </Text>
+            <SettingBox>
+              <Dropdown onClick={(value) => setOneDepth(value)} items={skillOneDepth} initialValue={'대분류'} />
+              <Dropdown
+                onClick={(value) => setTwoDepth(value)}
+                items={skillTwoDepth[`${oneDepth}`] || []}
+                initialValue={'상세분류'}
+              />
+              <Dropdown onClick={handleDropdownClick} items={dropdownItems} initialValue={'숙련도'} />
+            </SettingBox>
+          </SettingWrapper>
+
+          <Spacer top={35} />
+          <SettingWrapper>
+            <Text font={theme.typography.suit15m} color={theme.colors.b9}>
+              목적 (최대 3개)
+            </Text>
+            <Checkbox options={purposeOptions} setState={setPurposeOptions} onChange={handleCheckboxChange} />
+          </SettingWrapper>
+
+          <Spacer top={35} />
+          <SettingWrapper>
+            <Text font={theme.typography.suit15m} color={theme.colors.b9}>
+              지역
+            </Text>
+            <Dropdown onClick={(value) => setResion(value)} items={regionOptions} initialValue={'시/도/광역시'} />
+          </SettingWrapper>
+
+          <Spacer top={35} />
+          <InputWithLabel
+            label="직장명"
+            limit={10}
+            value={input}
+            placeholder="직장명을 입력해주세요"
+            isValid={true}
+            message="테스트"
+            hideMessage={true}
+            onChange={(value) => setInput(value)}
+          />
+
+          <Spacer top={35} />
+          <InputWithLabel
+            multiline
+            label="자기소개"
+            limit={150}
+            value={input}
+            placeholder="자기소개를 입력해주세요"
+            isValid
+            hideMessage
+            onChange={(value) => setInput(value)}
+          />
         </MainBox>
+        <BottomWrapper>
+          <Button text="프로필 저장하기" onClick={() => {}} isActive={true} />
+        </BottomWrapper>
       </MainWrapper>
     </Container>
   );
 };
 
 export default Setting;
-
-const Container = styled.div``;
-
-const MainWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.c1};
-  height: 100%;
-`;
-
-const MainBox = styled.section`
-  background-color: ${(props) => props.theme.colors.w1};
-  border-radius: 16px 16px 0 0;
-  padding: 0 22px;
-  margin-top: 75px;
-  position: relative;
-`;
-
-const ImageWrapper = styled.div`
-  position: relative;
-  top: -50px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-`;
-
-const ImageBox = styled.div`
-  border-radius: 0 150px 150px 0;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-`;
-
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
-const ImageWrite = styled.div`
-  position: absolute;
-  bottom: -8px;
-  right: 0%;
-  background: ${({ theme }) => theme.colors.w1};
-  padding: 7px;
-  border-radius: 50%;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px;
-`;

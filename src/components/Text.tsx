@@ -27,7 +27,7 @@ export default Text;
 const TextBox = styled.div<{ color?: string }>`
   color: ${(props) => (props.color ? props.color : props.theme.colors.b)};
   display: flex;
-
+  user-select: none;
   flex-direction: row;
 `;
 
