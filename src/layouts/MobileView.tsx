@@ -5,7 +5,10 @@ import Navigation from '../components/Navigation';
 import Spacer from '../components/Spacer';
 
 const MobileView = () => {
-  const matchRoute = useMatch('/profile/:id');
+  const settingMatch = useMatch('/profile/:id');
+  const loginMatch = useMatch('/login');
+
+  const matchRoute = settingMatch || loginMatch;
   return (
     <Container>
       <Wrapper>

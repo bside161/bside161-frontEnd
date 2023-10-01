@@ -15,9 +15,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/landing" element={<MainLanding />} />
         <Route element={<MobileView />}>
+          <Route path="/landing" element={<MainLanding />} />
+          <Route path="/login" element={<Login />} />
           <Route path="" element={<TestPage />} />
           <Route path="/feed" element={<Feeds />} />
           <Route path="/feed/:id" element={<Feed />} />
