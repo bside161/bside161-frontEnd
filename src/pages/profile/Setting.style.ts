@@ -27,6 +27,11 @@ const SettingBox = styled.div`
   gap: 8px;
 `;
 
+const TagBox = styled.div`
+  display: flex;
+  gap: 6px;
+`;
+
 const ImageWrapper = styled.div`
   position: relative;
   top: -50px;
@@ -72,6 +77,7 @@ export {
   Img,
   ImageWrite,
   SettingBox,
+  TagBox,
   SettingWrapper,
   MainBox,
   MainWrapper,

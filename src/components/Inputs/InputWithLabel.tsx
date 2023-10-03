@@ -5,6 +5,7 @@ interface InputProps {
   multiline?: boolean;
   label: string;
   value: string;
+  validValue?: boolean;
   placeholder: string;
   limit: number;
   isValid: boolean;
@@ -18,6 +19,7 @@ const InputWithLabel = ({
   label,
   limit,
   value,
+  validValue = false,
   placeholder,
   isValid,
   message,
@@ -26,8 +28,13 @@ const InputWithLabel = ({
 }: InputProps) => {
   const [count, setCount] = useState(0);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCount(e.target.value.length);
-    onChange(e.target.value);
+    const sanitizedValue = e.target.value.replace(/[^a-zA-Z0-9]/g, '');
+    setCount(sanitizedValue.length);
+    if (validValue) {
+      onChange(sanitizedValue);
+    } else {
+      onChange(e.target.value);
+    }
   };
 
   return (
