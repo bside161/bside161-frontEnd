@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import MobileView from './layouts/MobileView';
+import Agreement from './pages/Agreement.tsx';
 import Components from './pages/Components.page.tsx';
 import Feed from './pages/feed/Feed.page';
 import Feeds from './pages/feed/Feeds.page';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/feed/:id" element={<Feed />} />
           <Route path="/write" element={<Write />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/agreement" element={<Agreement />} />
           <Route path="/profile/:id" element={<Setting />} />
           <Route path="/profile/:id/more" element={<More />} />
           <Route path="/components" element={<Components />} />

@@ -5,7 +5,7 @@ import Navigation from '../components/Navigation';
 import useRouteMatched from '../hooks/useRouteMatch';
 
 const MobileView = () => {
-  const isMatch = useRouteMatched('/profile/:id', '/login', '/write');
+  const isMatch = useRouteMatched('/profile/:id', '/login', '/write', '/agreement');
   return (
     <Container>
       <Wrapper>
@@ -20,6 +20,7 @@ export default MobileView;
 
 const Container = styled.main`
   height: 100%;
+  /* max-width: 375px; */
   max-width: 480px;
   width: auto;
   margin: 0 auto;
