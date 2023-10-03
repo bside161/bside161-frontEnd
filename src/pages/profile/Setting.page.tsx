@@ -10,6 +10,7 @@ import {
   Img,
   ImageWrite,
   SettingBox,
+  TagBox,
   SettingWrapper,
   MainBox,
   MainWrapper,
@@ -19,6 +20,7 @@ import { ReactComponent as Back } from '../../assets/svg/back_24_B.svg';
 import { ReactComponent as Default } from '../../assets/svg/default_profile.svg';
 import { ReactComponent as Write } from '../../assets/svg/image_write.svg';
 import Button from '../../components/Button';
+import Tag from '../../components/CustomTag/Tag';
 import { Header } from '../../components/Header/Header';
 import Checkbox, { checkboxOptions } from '../../components/Inputs/Checkbox';
 import Dropdown from '../../components/Inputs/Dropdown/Dropdown';
@@ -29,22 +31,37 @@ import UnStyleButton from '../../components/UnStyleButton';
 import { skillOneDepth, skillTwoDepth, filterSubOptions, regionOptions } from '../../modules/constants';
 
 const dropdownItems = [
-  { value: '상', text: '상' },
-  { value: '중', text: '중' },
-  { value: '하', text: '하' },
+  { text: '숙련도', value: '', defaultValue: true },
+  { text: '상', value: '상' },
+  { text: '중', value: '중' },
+  { text: '하', value: '하' },
 ];
 
 const Setting = () => {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [input, setInput] = useState('');
-  const [oneDepth, setOneDepth] = useState('');
-  const [twoDepth, setTwoDepth] = useState('');
+  const [nickName, setNickName] = useState(''); // 닉네임
+  const [skills, setSkills] = useState<string[]>([]);
+  const [oneDepth, setOneDepth] = useState(''); // 스킬(대분류)
+  const [twoDepth, setTwoDepth] = useState(''); // 스킬(상세분류)
+  const [threeDepth, setThreeDepth] = useState(''); // 스킬(숙련도)
   const [purposeOptions, setPurposeOptions] = useState<checkboxOptions[] | []>([...filterSubOptions]); // 목적
-  const [resion, setResion] = useState('');
+  const [resion, setResion] = useState(''); // 지역
+  const [company, setCompany] = useState('');
+  const [intro, setIntro] = useState('');
 
   const handleDropdownClick = (value: string) => {
-    console.log(value);
+    const joinValue = `${twoDepth}_${value}`;
+    if (skills.length < 3) {
+      setSkills([...skills, joinValue]);
+      setOneDepth('');
+      setTwoDepth('');
+      setThreeDepth('');
+    }
+  };
+
+  const handleDeleteSkill = (value) => {
+    setSkills(skills.filter((skill) => skill !== value));
   };
 
   const handleCheckboxChange = (
@@ -56,6 +73,8 @@ const Setting = () => {
       prevCheckboxes.map((checkbox) => (checkbox.value === value ? { ...checkbox, checked: !newState } : checkbox)),
     );
   };
+
+  const validDropDown = skills.length === 3;
 
   return (
     <Container>
@@ -87,12 +106,13 @@ const Setting = () => {
           <InputWithLabel
             label="닉네임"
             limit={10}
-            value={input}
+            value={nickName}
             placeholder="닉네임을 입력해주세요"
             isValid={true}
             message="테스트"
             hideMessage={true}
-            onChange={(value) => setInput(value)}
+            validValue
+            onChange={(value) => setNickName(value)}
           />
 
           <Spacer top={35} />
@@ -101,14 +121,33 @@ const Setting = () => {
               스킬 (최대 3개)
             </Text>
             <SettingBox>
-              <Dropdown onClick={(value) => setOneDepth(value)} items={skillOneDepth} initialValue={'대분류'} />
               <Dropdown
+                disabled={validDropDown}
+                value={oneDepth}
+                onClick={(value) => setOneDepth(value)}
+                items={skillOneDepth}
+                initialValue={'대분류'}
+              />
+              <Dropdown
+                disabled={validDropDown}
+                value={twoDepth}
                 onClick={(value) => setTwoDepth(value)}
                 items={skillTwoDepth[`${oneDepth}`] || []}
                 initialValue={'상세분류'}
               />
-              <Dropdown onClick={handleDropdownClick} items={dropdownItems} initialValue={'숙련도'} />
+              <Dropdown
+                disabled={validDropDown}
+                value={threeDepth}
+                onClick={handleDropdownClick}
+                items={dropdownItems}
+                initialValue={'숙련도'}
+              />
             </SettingBox>
+            <TagBox>
+              {skills.map((skill) => {
+                return <Tag text={skill} onDelete={handleDeleteSkill} />;
+              })}
+            </TagBox>
           </SettingWrapper>
 
           <Spacer top={35} />
@@ -131,12 +170,12 @@ const Setting = () => {
           <InputWithLabel
             label="직장명"
             limit={10}
-            value={input}
+            value={company}
             placeholder="직장명을 입력해주세요"
             isValid={true}
             message="테스트"
             hideMessage={true}
-            onChange={(value) => setInput(value)}
+            onChange={(value) => setCompany(value)}
           />
 
           <Spacer top={35} />
@@ -144,11 +183,11 @@ const Setting = () => {
             multiline
             label="자기소개"
             limit={150}
-            value={input}
+            value={intro}
             placeholder="자기소개를 입력해주세요"
             isValid
             hideMessage
-            onChange={(value) => setInput(value)}
+            onChange={(value) => setIntro(value)}
           />
         </MainBox>
         <BottomWrapper>

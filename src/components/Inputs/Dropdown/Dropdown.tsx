@@ -9,9 +9,10 @@ interface DropdownProps {
   initialValue: string;
   onClick: (value: string) => void;
   disabled?: boolean;
+  value: string;
 }
 
-const Dropdown = ({ items, initialValue, onClick, disabled }: DropdownProps) => {
+const Dropdown = ({ items, initialValue, onClick, disabled, value }: DropdownProps) => {
   const containerRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [selectedText, setSelectedText] = useState(initialValue);
@@ -19,6 +20,10 @@ const Dropdown = ({ items, initialValue, onClick, disabled }: DropdownProps) => 
   const toggleActive = () => {
     setIsActive(!isActive);
   };
+
+  useEffect(() => {
+    value === '' && setSelectedText(initialValue);
+  }, [value, onClick]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -34,6 +39,10 @@ const Dropdown = ({ items, initialValue, onClick, disabled }: DropdownProps) => 
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  console.log('items==================', `!!!!!!!!!!${value}`, initialValue);
+
+  console.log('test', value === '', selectedText);
 
   return (
     <DropdownWrapper ref={containerRef} onBlur={() => setIsActive(false)}>
@@ -71,5 +80,5 @@ const Trigger = styled.div<{ disabled?: boolean }>`
   color: ${({ theme, disabled }) => (disabled ? theme.colors.l2 : theme.colors.b4)};
   border: 1px solid ${({ theme }) => theme.colors.l2};
   border-radius: 6px;
-  cursor: ${(props) => (props.disabled ? 'none' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'auto' : 'pointer')};
 `;
