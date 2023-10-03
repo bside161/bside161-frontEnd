@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 export interface Item {
   text: string;
   value: string;
+  defaultValue?: boolean;
 }
 
 export interface PanelProps {
@@ -21,11 +22,12 @@ const Panel = ({ items, setSelectedText, toggleActive, onClick }: PanelProps) =>
   };
   return (
     <PanelWrapper>
-      {items.map(({ text, value }) => (
+      {items.map(({ text, value, defaultValue }) => (
         <PanelItem
           key={value}
+          defaultValue={defaultValue}
           onClick={() => {
-            handleItemClick(value, text);
+            !defaultValue ? handleItemClick(value, text) : null;
           }}
         >
           {text}
@@ -48,12 +50,12 @@ const PanelWrapper = styled.ul`
   background-color: ${({ theme }) => theme.colors.w1};
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 6px;
-  max-height: 100px;
+  max-height: 125px;
   overflow: scroll;
   z-index: 1;
 `;
 
-const PanelItem = styled.li`
+const PanelItem = styled.li<{ defaultValue: boolean }>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -61,8 +63,8 @@ const PanelItem = styled.li`
   padding: 11px 15px 12px;
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.colors.l3};
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.b6};
+  cursor: ${({ defaultValue }) => (defaultValue ? 'auto' : 'pointer')};
+  color: ${({ theme, defaultValue }) => (defaultValue ? theme.colors.b9 : theme.colors.b6)};
   font-size: 12px;
   font-weight: 400;
 
