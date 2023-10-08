@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import MobileView from './layouts/MobileView';
+import Auth from './pages/Auth.page.tsx';
 import Components from './pages/Components.page.tsx';
 import Feed from './pages/feed/Feed.page';
 import Feeds from './pages/feed/Feeds.page';
@@ -19,6 +20,7 @@ function App() {
         <Route element={<MobileView />}>
           <Route path="/landing" element={<MainLanding />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="" element={<TestPage />} />
           <Route path="/feed" element={<Feeds />} />
           <Route path="/feed/:id" element={<Feed />} />
