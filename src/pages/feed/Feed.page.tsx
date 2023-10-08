@@ -2,14 +2,12 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 
-import HeaderLogo from '../../assets/images/header_logo.png';
 import { ReactComponent as Back } from '../../assets/svg/back_24_W.svg';
 import { ReactComponent as Dots } from '../../assets/svg/FeedDetail/dots_vertical.svg';
 import { ReactComponent as Like } from '../../assets/svg/FeedDetail/like.svg';
-import { ReactComponent as Message } from '../../assets/svg/FeedDetail/Message.svg';
+import { ReactComponent as Message } from '../../assets/svg/FeedDetail/message.svg';
 import { ReactComponent as Pencil } from '../../assets/svg/FeedDetail/pencil.svg';
 import { ReactComponent as ReCommnetLine } from '../../assets/svg/FeedDetail/ReCommnetLine.svg';
-import { ReactComponent as Scrap } from '../../assets/svg/FeedDetail/scrap.svg';
 import { ReactComponent as UnLike } from '../../assets/svg/FeedDetail/unLike.svg';
 import { ReactComponent as UnScrap } from '../../assets/svg/FeedDetail/unScrap.svg';
 import { ReactComponent as Logo } from '../../assets/svg/main_logo.svg';
