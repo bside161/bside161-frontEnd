@@ -13,7 +13,7 @@ const Login = () => {
 
   const REST_API_KEY = 'da0c8695d73803f2fbd834906a0d96d0';
   // const REDIRECT_URI = 'http://localhost:3020/auth';
-  const REDIRECT_URI = 'http://15.164.242.20/auth/idpresponse/kakao';
+  const REDIRECT_URI = 'http://15.164.242.20/api/auth/idpresponse/kakao';
   const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const onClickKakao = () => {
     window.location.href = link;
