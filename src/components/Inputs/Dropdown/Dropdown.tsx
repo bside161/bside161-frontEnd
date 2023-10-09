@@ -40,10 +40,6 @@ const Dropdown = ({ items, initialValue, onClick, disabled, value }: DropdownPro
     };
   }, []);
 
-  console.log('items==================', `!!!!!!!!!!${value}`, initialValue);
-
-  console.log('test', value === '', selectedText);
-
   return (
     <DropdownWrapper ref={containerRef} onBlur={() => setIsActive(false)}>
       <Trigger disabled={disabled} onClick={!disabled ? toggleActive : () => {}}>

@@ -85,6 +85,7 @@ const Feeds = () => {
         <FeedFixBox>
           <Write />
 
+          <Spacer top={24} />
           <FeedFixTextWrapper>
             <Text font={theme.typography.suit22sb} color={theme.colors.w1}>
               일이삼사오육칠팔구십
@@ -94,17 +95,20 @@ const Feeds = () => {
             </Text>
           </FeedFixTextWrapper>
 
+          <Spacer top={8} />
           <Text font={theme.typography.suit22r} color={theme.colors.w1}>
             재밌는 아이디어를 들려주세요!
           </Text>
-          <Spacer top={10} />
+          <Spacer top={4} />
 
-          <Text font={theme.typography.suit15ra} color={theme.colors.w1}>{`아이디어 적으러 가기 >`}</Text>
+          <Text font={theme.typography.suit15ra} color={theme.colors.w2}>{`아이디어 적으러 가기 >`}</Text>
         </FeedFixBox>
 
         <FeedBox>
-          <FeedWrapper>
-            <Text font={theme.typography.suit16sb}>현재 인기 있는 아이디어</Text>
+          <FeedWrapper style={{ padding: '47px 0 0 22px' }}>
+            <Text font={theme.typography.suit16sb} color={theme.colors.b4}>
+              현재 인기 있는 아이디어
+            </Text>
             <Spacer top={18} />
             <FeedFixWrapper>
               {ideas.map((idea, idx) => {
@@ -113,11 +117,16 @@ const Feeds = () => {
             </FeedFixWrapper>
           </FeedWrapper>
 
-          <FeedWrapper>
-            <Text font={theme.typography.suit16sb}>피드 영역 타이틀입니다</Text>
-            <Spacer top={18} />
+          <FeedWrapper style={{ padding: '47px 22px 0 22px' }}>
+            <Text font={theme.typography.suit16sb} color={theme.colors.b4}>
+              피드 영역 타이틀입니다
+            </Text>
+            <Spacer top={20} />
             {Array.from({ length: 20 }, (_, idx) => (
-              <IdeaCard key={idx} tags={tags} />
+              <>
+                <IdeaCard key={idx} tags={tags} />
+                <Spacer bottom={20} />
+              </>
             ))}
           </FeedWrapper>
           <Padding bottom={80} />
@@ -188,10 +197,9 @@ const Wrapper = styled.section`
 `;
 
 const FeedFixBox = styled.div`
-  padding: 40px 30px;
+  padding: 50px 30px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
   background-color: ${(props) => props.theme.colors.c1};
   color: ${(props) => props.theme.colors.w1};
 `;
@@ -212,11 +220,12 @@ const FeedFixTextWrapper = styled.div`
 const FeedBox = styled.div`
   background-color: ${(props) => props.theme.colors.w1};
   border-radius: 16px 16px 0 0;
-  padding: 0 22px;
+  /* padding: 0 22px; */
 `;
 
 const FeedWrapper = styled.div`
-  padding-top: 40px;
+  padding-top: 47px;
+  /* padding: 0 22px; */
 `;
 
 const FilterContent = styled.div`
