@@ -7,7 +7,7 @@ const query = axios.create({
 
 export const AuthKakao = async (code) => {
   try {
-    const response = await query.get('/auth/idpresponse/kakao', {
+    const response = await query.get('/api/auth/idpresponse/kakao', {
       params: {
         code,
       },
