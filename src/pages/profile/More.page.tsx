@@ -67,12 +67,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* height: calc(var(--vh, 1vh) * 100); */
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.colors.bg1};
 `;
 
 const MainWrapper = styled.section`
-  background-color: ${({ theme }) => theme.colors.bg1};
-  height: 100%;
-  padding: 34px 30px;
+  /* background-color: ${({ theme }) => theme.colors.bg1}; */
+  /* height: 100svh; */
+  padding: 84px 30px 0 30px;
+  overflow: hidden;
 `;
 
 const MoreButton = styled(UnStyleButton)`

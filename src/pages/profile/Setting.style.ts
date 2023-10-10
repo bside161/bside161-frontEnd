@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding-bottom: 60px;
+`;
 
 const MainWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.c1};
@@ -11,7 +13,7 @@ const MainBox = styled.section`
   background-color: ${(props) => props.theme.colors.w1};
   border-radius: 16px 16px 0 0;
   padding: 0 22px;
-  margin-top: 75px;
+  margin-top: 135px;
   position: relative;
   padding-bottom: 40px;
 `;

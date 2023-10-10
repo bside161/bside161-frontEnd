@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import MobileView from './layouts/MobileView';
-import Auth from './pages/Auth.page.tsx';
 import Agreement from './pages/Agreement.tsx';
+import Auth from './pages/Auth.page.tsx';
 import Components from './pages/Components.page.tsx';
 import Feed from './pages/feed/Feed.page';
 import Feeds from './pages/feed/Feeds.page';

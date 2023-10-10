@@ -197,7 +197,7 @@ const Wrapper = styled.section`
 `;
 
 const FeedFixBox = styled.div`
-  padding: 50px 30px;
+  padding: 100px 30px 50px 30px;
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.c1};
