@@ -1,5 +1,8 @@
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+
 import IdeaBack from '../../assets/images/idea_back.png';
+import Text from '../Text';
 
 interface IdeaCardProps {
   category: string;
@@ -8,13 +11,18 @@ interface IdeaCardProps {
 }
 
 const PopCard = ({ category, title, image }: IdeaCardProps) => {
+  const theme = useTheme();
   return (
     <IdeaCardWrapper>
       <img src={image ?? IdeaBack} />
       <CardBoxBack />
       <CardBox>
-        <div>{category}</div>
-        <div>{title}</div>
+        <Text style={{ fontSize: 13, fontWeight: 500 }} color={theme.colors.w1}>
+          {category}
+        </Text>
+        <Text style={{ fontSize: 14, fontWeight: 600, lineHeight: '22px' }} color={theme.colors.w1}>
+          {title}
+        </Text>
       </CardBox>
     </IdeaCardWrapper>
   );
@@ -29,7 +37,7 @@ const IdeaCardWrapper = styled.div`
   height: 180px;
   position: relative;
   overflow: hidden;
-  background-color: blue;
+  background-color: ${({ theme }) => theme.colors.c1};
 `;
 
 const CardBoxBack = styled.div`
@@ -47,7 +55,7 @@ const CardBox = styled.div`
   bottom: 0;
   display: flex;
   flex-direction: column;
-  padding: 30px 16px;
+  padding: 30px 15px 15px 15px;
   gap: 6px;
   word-wrap: break-word;
 `;

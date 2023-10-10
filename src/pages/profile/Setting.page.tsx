@@ -172,7 +172,7 @@ const Setting = () => {
             limit={10}
             value={company}
             placeholder="직장명을 입력해주세요"
-            isValid={true}
+            isValid
             message="테스트"
             hideMessage={true}
             onChange={(value) => setCompany(value)}

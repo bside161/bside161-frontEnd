@@ -28,10 +28,21 @@ const InputWithLabel = ({
 }: InputProps) => {
   const [count, setCount] = useState(0);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const sanitizedValue = e.target.value.replace(/[^a-zA-Z0-9]/g, '');
-    setCount(sanitizedValue.length);
+    let inputValue = e.target.value;
+
+    // 특수문자 제거
+    const sanitizedValue = inputValue.replace(/[~!@#$%";'^,&*()_+|</>=>`?:{[\}]/g, '');
+
+    if (sanitizedValue.length > limit) {
+      inputValue = sanitizedValue.substring(0, limit);
+    } else {
+      inputValue = sanitizedValue;
+    }
+
+    setCount(inputValue.length);
+
     if (validValue) {
-      onChange(sanitizedValue);
+      onChange(inputValue);
     } else {
       onChange(e.target.value);
     }
@@ -84,6 +95,7 @@ const Count = styled.span`
 const Input = styled.input`
   box-sizing: border-box;
   width: 100%;
+  height: 44px;
   border-radius: 6px;
   padding: 11px 16px;
   font-size: 14px;

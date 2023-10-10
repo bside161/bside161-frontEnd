@@ -13,7 +13,7 @@ const colors = {
   l2: 'rgba(0, 0, 0, 0.10)',
   l3: 'rgba(0, 0, 0, 0.05)',
   w1: '#FFFFFF',
-  w2: 'rgba(255, 255, 255, 0.95)',
+  w2: 'rgba(255, 255, 255, 0.90)',
 };
 
 const typography = {

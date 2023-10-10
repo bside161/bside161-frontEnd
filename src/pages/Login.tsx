@@ -28,9 +28,9 @@ const Login = () => {
           <LogoBox color="#FAE100">
             <Kakao />
           </LogoBox>
-          <Text style={{ padding: '11px 66px' }} font={theme.typography.suit14r}>
-            카카오 로그인
-          </Text>
+          <TextWrapper>
+            <Text font={theme.typography.suit14r}>카카오 로그인</Text>
+          </TextWrapper>
         </ButtonWrapper>
       </UnStyleButton>
 
@@ -40,9 +40,9 @@ const Login = () => {
           <LogoBox color="#03C75A">
             <Naver />
           </LogoBox>
-          <Text style={{ padding: '11px 66px' }} font={theme.typography.suit14r}>
-            네이버 로그인
-          </Text>
+          <TextWrapper>
+            <Text font={theme.typography.suit14r}>네이버 로그인</Text>
+          </TextWrapper>
         </ButtonWrapper>
       </UnStyleButton>
     </Container>
@@ -62,7 +62,7 @@ const Container = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.l1};
+  /* border: 1px solid ${({ theme }) => theme.colors.l1}; */
   border-radius: 8px;
 `;
 
@@ -70,4 +70,12 @@ const LogoBox = styled.div<{ color: string }>`
   padding: 6px;
   background-color: ${(props) => props.color};
   border-radius: 8px 0px 0px 8px;
+`;
+
+const TextWrapper = styled.div`
+  padding: 16px 66px;
+  border-top: 1px solid ${({ theme }) => theme.colors.l1};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.l1};
+  border-right: 1px solid ${({ theme }) => theme.colors.l1};
+  border-radius: 0 8px 8px 0;
 `;
