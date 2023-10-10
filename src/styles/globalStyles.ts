@@ -12,6 +12,8 @@ export const globalStyles = css`
     display: flex;
     place-items: center;
     /* min-width: 320px; */
+    /* height: 100dvh; */
+    overflow: hidden;
     min-height: 100vh;
     min-height: -webkit-fill-available;
     user-select: none;

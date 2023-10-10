@@ -30,8 +30,11 @@ const Container = styled.main`
 `;
 
 const Wrapper = styled.div`
-  /* height: calc(100% - 20px); */
-  height: 100%;
+  /* height: calc(100% - 50px); */
+  height: 100dvh;
+  /* height: calc(var(--vh, 1vh) * 100); */
+  /* height: -webkit-fill-available; */
+  /* height: fill-available; */
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

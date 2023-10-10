@@ -31,7 +31,7 @@ const Container = styled.header<{ main?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   box-sizing: border-box;
   width: 100%;
   max-width: 480px;

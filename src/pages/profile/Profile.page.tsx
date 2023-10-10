@@ -46,7 +46,7 @@ const Profile = () => {
           <ProfileImage src="https://image.toast.com/aaaaaqx/catchtable/shopinfo/sR1B6qa4fT537GjL6KO9bHg/r1b6qa4ft537gjl6ko9bhg_2371016411290157.jpg?detail750" />
         </ImageWrapper>
 
-        <Padding top={250} />
+        <Padding top={300} />
 
         <ProfileBox>
           {/* 프로필설정 */}
@@ -120,7 +120,9 @@ const Profile = () => {
 
 export default Profile;
 
-const ProfileContainer = styled.div``;
+const ProfileContainer = styled.div`
+  padding-bottom: 60px;
+`;
 
 const ProfileWrapper = styled.div`
   position: relative;
@@ -163,7 +165,7 @@ const TagWrapper = styled.div`
 `;
 
 const TabPannelBox = styled.div`
-  padding: 30px 20px 80px 20px;
+  padding: 30px 20px 60px 20px;
   background-color: ${({ theme }) => theme.colors.bg1};
   display: flex;
   flex-direction: column;
