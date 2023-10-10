@@ -95,6 +95,7 @@ const Count = styled.span`
 const Input = styled.input`
   box-sizing: border-box;
   width: 100%;
+  height: 44px;
   border-radius: 6px;
   padding: 11px 16px;
   font-size: 14px;

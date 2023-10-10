@@ -55,8 +55,9 @@ const Profile = () => {
               <Text font={theme.typography.suit15sb} color={theme.colors.c1}>
                 마케팅/영업
               </Text>
+              <Spacer top={6} />
               <Text font={theme.typography.suit22sb}>일이삼사오육칠팔구</Text>
-              <Spacer top={4} />
+              <Spacer top={6} />
               <Text font={theme.typography.suit15rb} color={theme.colors.b9}>
                 외국계 스타트업 | 강원특별자치도
               </Text>
@@ -71,7 +72,7 @@ const Profile = () => {
             </EditButton>
           </ProfileMainBox>
           {/* 프로필 설명 */}
-          <Text font={theme.typography.suit15rb} style={{ lineHeight: 1.5 }}>
+          <Text font={theme.typography.suit15rb} color={theme.colors.b4} style={{ lineHeight: 1.5 }}>
             안녕하세요! 8년차 일이삼사오육칠팔구십이예요😊 무신사, 에이블리, 29cm 등 핫한 커머스부터, 카카오뱅크에
             이르기까지! 디지털마케팅의 A부터 Z까지 모든것을 직접 경험한 올라운드 마케터입니다!🤩 이번에 다양한 실무
             경험을 통해 퍼포머스마케터로의 직무 전환에도 성공했어요!

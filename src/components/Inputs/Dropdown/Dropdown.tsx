@@ -67,7 +67,8 @@ const Trigger = styled.div<{ disabled?: boolean }>`
   user-select: none;
   justify-content: space-between;
   align-items: center;
-  padding: 11px 15px 12px;
+  height: 40px;
+  padding: 14px 16px;
   font-size: 14px;
   font-weight: 500;
   box-sizing: border-box;

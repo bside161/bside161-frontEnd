@@ -66,7 +66,7 @@ const ImageWrite = styled.div`
 `;
 
 const BottomWrapper = styled.div`
-  padding: 0 22px 22px 34px;
+  padding: 0 22px 34px 22px;
   background: ${({ theme }) => theme.colors.w1};
 `;
 

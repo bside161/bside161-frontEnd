@@ -42,11 +42,13 @@ const Navigation = () => {
 export default Navigation;
 
 const NavContainer = styled.div`
-  position: sticky;
-  height: 65px;
+  position: fixed;
+  height: 75px;
   bottom: 0;
   width: 100%;
-  /* margin-bottom: 10px; */
+  left: 50%; /* Move the starting point of the navigation to the center of the viewport */
+  transform: translateX(-50%); /* Shift the navigation to the left by half of its width */
+  max-width: 480px; /* Set the max-width to match the main layout */
 `;
 
 const NavBackImg = styled.img`
