@@ -5,7 +5,7 @@ import Navigation from '../components/Navigation';
 import useRouteMatched from '../hooks/useRouteMatch';
 
 const MobileView = () => {
-  const isMatch = useRouteMatched('/profile/:id', '/login', '/write', '/agreement');
+  const isMatch = useRouteMatched('/profile/:id', '/login', '/write', '/agreement', '/auth');
   return (
     <Container>
       <Wrapper>

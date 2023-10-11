@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const query = axios.create({
-  baseURL: 'http://15.164.242.20',
+  baseURL: 'http://15.164.242.20/api',
   withCredentials: true,
 });
 
 export const AuthKakao = async (code) => {
   try {
-    const response = await query.get('/api/auth/idpresponse/kakao', {
+    const response = await query.get('/auth/idpresponse/kakao', {
       withCredentials: true,
     });
     if (response.data) {
@@ -23,7 +23,7 @@ export const AuthKakao = async (code) => {
 
 export const AuthKakaoMe = async (token: string) => {
   try {
-    const kakaoResponse = await axios.post('https://kapi.kakao.com/v2/user/me', {
+    const kakaoResponse = await query.get('/profiles', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -34,7 +34,6 @@ export const AuthKakaoMe = async (token: string) => {
 
     throw new Error('fail');
   } catch (error) {
-    console.log('err', error);
     throw new Error(error);
   }
 };
