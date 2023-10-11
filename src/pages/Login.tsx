@@ -29,7 +29,7 @@ const Login = () => {
             <Kakao />
           </LogoBox>
           <TextWrapper>
-            <Text font={theme.typography.suit14r}>카카오 로그인</Text>
+            <Text font={theme.typography.suit15rb}>카카오 로그인</Text>
           </TextWrapper>
         </ButtonWrapper>
       </UnStyleButton>
@@ -41,7 +41,7 @@ const Login = () => {
             <Naver />
           </LogoBox>
           <TextWrapper>
-            <Text font={theme.typography.suit14r}>네이버 로그인</Text>
+            <Text font={theme.typography.suit15rb}>네이버 로그인</Text>
           </TextWrapper>
         </ButtonWrapper>
       </UnStyleButton>
@@ -73,7 +73,7 @@ const LogoBox = styled.div<{ color: string }>`
 `;
 
 const TextWrapper = styled.div`
-  padding: 16px 66px;
+  padding: 15px 66px;
   border-top: 1px solid ${({ theme }) => theme.colors.l1};
   border-bottom: 1px solid ${({ theme }) => theme.colors.l1};
   border-right: 1px solid ${({ theme }) => theme.colors.l1};
