@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const host = window.location.hostname === 'localhost' ? 'http://{your server URL}' : 'api';
+
 const query = axios.create({
-  baseURL: 'http://15.164.242.20/api',
+  baseURL: host,
   withCredentials: true,
 });
 
