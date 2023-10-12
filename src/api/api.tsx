@@ -9,7 +9,7 @@ const query = axios.create({
 
 export const AuthKakao = async (code) => {
   try {
-    const response = await query.get('/api/auth/idpresponse/kakao', {
+    const response = await query.get('/auth/idpresponse/kakao', {
       withCredentials: true,
     });
     if (response.data) {
@@ -25,7 +25,7 @@ export const AuthKakao = async (code) => {
 
 export const AuthKakaoMe = async (token: string) => {
   try {
-    const kakaoResponse = await query.get('/api/profiles', {
+    const kakaoResponse = await query.get('/profiles', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
