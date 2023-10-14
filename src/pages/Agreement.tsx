@@ -323,7 +323,7 @@ const Agreement = () => {
       >
         <div style={{ display: 'flex' }}>
           <p
-            onClick={onClickCollection}
+            onClick={onClickTerms}
             style={{ cursor: 'pointer', color: '#5F27FF', textDecoration: 'underline', textUnderlineOffset: '2px' }}
           >
             개인정보 수집 및 이용 동의
@@ -332,7 +332,7 @@ const Agreement = () => {
         </div>
         <div style={{ display: 'flex' }}>
           <p
-            onClick={onClickTerms}
+            onClick={onClickCollection}
             style={{ cursor: 'pointer', color: '#5F27FF', textDecoration: 'underline', textUnderlineOffset: '2px' }}
           >
             서비스 이용약관
