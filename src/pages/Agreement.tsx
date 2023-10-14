@@ -28,8 +28,10 @@ const Agreement = () => {
   const collectionBottomSheet = () => {
     const CollectionWrapper = styled.div`
       display: flex;
+      position: relative;
       flex-direction: column;
       padding: 22px;
+      padding-bottom: 72px;
     `;
 
     const UnorderedList = styled.ul`
@@ -48,6 +50,13 @@ const Agreement = () => {
       margin: 0;
     `;
 
+    const BtnDiv = styled.div`
+      position: fixed;
+      width: -webkit-fill-available;
+      margin-right: 22px;
+      bottom: 24px;
+    `;
+
     return (
       <BottomSheet
         scroll
@@ -56,7 +65,7 @@ const Agreement = () => {
           setIsOpenCollection(false);
         }}
       >
-        <CollectionWrapper>
+        <CollectionWrapper style={{ display: isOpenCollection ? '' : 'none' }}>
           <Text font={theme.typography.suit18sb} color={theme.colors.b2}>
             서비스 이용약관
           </Text>
@@ -152,6 +161,16 @@ const Agreement = () => {
           <Text font={theme.typography.suit14sm} color={theme.colors.b6}>
             본 이용약관의 내용은 23.08.24에 업데이트되었습니다.
           </Text>
+          <BtnDiv>
+            <Button
+              text="확인"
+              isActive
+              style={{
+                width: '100%',
+              }}
+              onClick={() => setIsOpenCollection(false)}
+            />
+          </BtnDiv>
         </CollectionWrapper>
       </BottomSheet>
     );
@@ -162,6 +181,7 @@ const Agreement = () => {
       display: flex;
       flex-direction: column;
       padding: 22px;
+      padding-bottom: 72px;
     `;
 
     const UnorderedList = styled.ul`
@@ -186,6 +206,13 @@ const Agreement = () => {
       font-weight: 400;
     `;
 
+    const BtnDiv = styled.div`
+      position: fixed;
+      width: -webkit-fill-available;
+      margin-right: 22px;
+      bottom: 24px;
+    `;
+
     return (
       <BottomSheet
         scroll
@@ -194,7 +221,7 @@ const Agreement = () => {
           setIsOpenTerms(false);
         }}
       >
-        <CollectionWrapper>
+        <CollectionWrapper style={{ display: isOpenTerms ? '' : 'none' }}>
           <Text font={theme.typography.suit18sb} color={theme.colors.b2}>
             개인정보 수집 및 이용 동의
           </Text>
@@ -267,6 +294,16 @@ const Agreement = () => {
           <Text font={theme.typography.suit14sm} color={theme.colors.b6}>
             본 이용약관의 내용은 23.08.24에 업데이트되었습니다.
           </Text>
+          <BtnDiv>
+            <Button
+              text="확인"
+              isActive
+              style={{
+                width: '100%',
+              }}
+              onClick={() => setIsOpenTerms(false)}
+            />
+          </BtnDiv>
         </CollectionWrapper>
       </BottomSheet>
     );
