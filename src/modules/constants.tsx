@@ -90,8 +90,8 @@ const skillTwoDepth = {
     { text: '상세분류', value: '', defaultValue: true },
     { text: 'IT기획', value: 'IT기획' },
     { text: '게임기획', value: '게임기획' },
-    { text: '제품기획', value: '게임기획' },
-    { text: '사업기획', value: '게임기획' },
+    { text: '제품기획', value: '제품기획' },
+    { text: '사업기획', value: '사업기획' },
   ],
   designer: [
     { text: '상세분류', value: '', defaultValue: true },

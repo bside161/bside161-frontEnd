@@ -1,31 +1,47 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useState, ChangeEvent } from 'react';
+import axios from 'axios';
+import { useState, ChangeEvent, useEffect } from 'react';
 
+import plus from '../../src/assets/images/plus.png';
 import { ReactComponent as RadioChecked } from '../assets/svg/active_check.svg';
+import { ReactComponent as RadioUnChecked } from '../assets/svg/active_radio_uncheck.svg';
 import { ReactComponent as Back } from '../assets/svg/back_24_B.svg';
 import { ReactComponent as Check } from '../assets/svg/check_24.svg';
 import { ReactComponent as UnCheck } from '../assets/svg/unCheck_24.svg';
 import { ReactComponent as Xmark } from '../assets/svg/x.svg';
 import BottomSheet from '../components/BottomSheet/BottomSheet';
+import { checkboxOptions, getDomain } from '../components/BottomSheet/CheckBox';
 import Divider from '../components/Divider';
+import Checkbox from '../components/Inputs/Checkbox';
+import Dropdown from '../components/Inputs/Dropdown/Dropdown';
+import Radio, { radioOptions } from '../components/Inputs/Radio';
 import Spacer from '../components/Spacer';
 import Tag from '../components/Tag';
 import Text from '../components/Text';
+import {
+  filterOptions,
+  filterRadio,
+  filterSubOptions,
+  regionOptions,
+  skillOneDepth,
+  skillTwoDepth,
+} from '../modules/constants';
 
 const Write = () => {
   const theme = useTheme();
   const [getIndex, setIndex] = useState('');
   const [getBody, setBody] = useState('');
   const [bodyCount, setBodyCount] = useState(0);
-  const [isOpenBottomSheet, setIsOpenBottomSheet] = useState(true);
+  const [getDomain, setDomain] = useState<getDomain[] | []>(filterOptions);
+  const [getpurpose, setpurpose] = useState<getDomain[] | []>(filterSubOptions);
+  const [isOpenBottomSheet, setIsOpenBottomSheet] = useState(false);
+  const [getArea, setArea] = useState('');
+  const [getCollaboration, setCollaboration] = useState<string>('all');
+  const [get1Depth, set1Depth] = useState('product');
+  const [get2Depth, set2Depth] = useState([]);
 
-  const infoIndex = [
-    { indexName: '분야', tag: ['IT', '게임', '제품', '유튜브컨텐츠', '영화', '웹툰'] },
-    { indexName: '목적', tag: ['사이드 프로잭트', '창업', '크라우드편딩', '공모전', '스터디'] },
-  ];
-  const sheet_left = ['기획', '디자인', '개발', '데이터', '마케팅/영업', '미디어'];
-  const sheet_right = ['게임디자인', '영상다지인', '시각디자인', '패션 디자인', '편집 디자인'];
+  console.log(get2Depth, 'get2Depth');
 
   const handleIndexChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 20) return;
@@ -38,9 +54,68 @@ const Write = () => {
     setBody(e.target.value);
     setBodyCount(e.target.value.length);
   };
+  const handleCheckboxChange = (
+    value: string,
+    newState: boolean,
+    setState: React.Dispatch<React.SetStateAction<checkboxOptions[]>>,
+  ) => {
+    setState((prevCheckboxes) =>
+      prevCheckboxes.map((checkbox) => (checkbox.value === value ? { ...checkbox, checked: !newState } : checkbox)),
+    );
+  };
+
+  const handleDropdownClick = (value: string) => {
+    setArea(value);
+  };
+
+  const onClick2Depth = (value: never) => {
+    if (get2Depth.includes(value)) {
+      set2Depth((prev2Depth) => prev2Depth.filter((item) => item !== value));
+    } else {
+      if (get2Depth.length >= 10) {
+        alert('10개 이상 선택할 수 없습니다.');
+      } else {
+        set2Depth((prev2Depth) => [...prev2Depth, value]);
+      }
+    }
+  };
+
+  const options = {
+    method: 'POST',
+    url: 'http://15.164.242.20/api/posts',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: 'Bearer 123',
+    },
+    data: {
+      title: 'string',
+      content: 'string',
+      domain: 'IT',
+      purpose: '사이드프로젝트',
+      collaboration: '상관없음',
+      area: '서울특별시',
+      members: ['string'],
+    },
+  };
+
+  const aaa = async () => {
+    console.log('ddfㅁㄴㅇㄹㅇㅇ');
+
+    const { data } = await axios.request(options);
+    console.log(data, 'dㅁㄴㅇㄹd');
+
+    try {
+      const { data } = await axios.request(options);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <MainWrapper>
+      <div onClick={aaa}>ddd</div>
       {/* 헤더 */}
       <HeaderBox>
         <Back />
@@ -70,32 +145,59 @@ const Write = () => {
       </div>
       <Divider color={theme.colors.bg1} height={8} bottom={30} />
       <BottomWrapper>
-        {infoIndex.map((item, idx) => {
-          return (
-            <div key={idx + 'tag'}>
-              <Text required font={theme.typography.suit14m} color={theme.colors.b9}>
-                {item.indexName}
-              </Text>
-              <Spacer top={12} />
-              <Tag
-                tags={item.tag}
-                style={{
-                  color: 'black',
-                  border: '1px solid rgba(0, 0, 0, 0.10)',
-                  padding: '12px 16px',
+        <BottomBox>
+          <Text font={theme.typography.suit15m} color={theme.colors.b9} required>
+            분야
+          </Text>
 
-                  backgroundColor: 'white',
-                }}
-              />
+          <Spacer bottom={20} />
+          <Checkbox options={getDomain} onChange={handleCheckboxChange} setState={setDomain} />
+        </BottomBox>
+        <BottomBox>
+          <Text font={theme.typography.suit15m} color={theme.colors.b9} required>
+            목적
+          </Text>
+
+          <Spacer bottom={20} />
+          <Checkbox options={getpurpose} onChange={handleCheckboxChange} setState={setpurpose} />
+        </BottomBox>
+        <BottomBox>
+          <Text font={theme.typography.suit15m} color={theme.colors.b9} required>
+            협업방식
+          </Text>
+
+          <Spacer bottom={20} />
+          <Radio defaultValue="all" options={filterRadio} onChange={(e) => setCollaboration(e)} gap={'large'} />
+        </BottomBox>
+        <BottomBox>
+          <Text font={theme.typography.suit15m} color={theme.colors.b9}>
+            모집 지역
+          </Text>
+
+          <Spacer bottom={20} />
+          <Dropdown onClick={handleDropdownClick} items={regionOptions} initialValue={'전국'} value={getArea} />
+        </BottomBox>
+        <BottomBox>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <Text font={theme.typography.suit15m} color={theme.colors.b9}>
+              팀원 모집
+            </Text>
+
+            <div
+              onClick={() => {
+                setIsOpenBottomSheet(true);
+              }}
+            >
+              <Text font={theme.typography.suit13m} color={theme.colors.b9} style={{ lineHeight: '20px' }}>
+                <img src={plus} /> 팀원추가
+              </Text>
             </div>
-          );
-        })}
+          </div>
+
+          <Spacer bottom={40} />
+        </BottomBox>
       </BottomWrapper>
-      <button
-        onClick={() => {
-          setIsOpenBottomSheet(true);
-        }}
-      ></button>
+
       <BottomSheet isOpen={isOpenBottomSheet} onClose={() => setIsOpenBottomSheet(false)}>
         <Sheet_TopBox>
           <Xmark />
@@ -110,30 +212,36 @@ const Write = () => {
         </Sheet_TopBox>
         <Sheet_BodyBox>
           <Sheet_Left>
-            {sheet_left.map((e, index) => {
-              return (
-                <Sheet_leftItem key={index}>
-                  <Text font={theme.typography.suit14m} color={theme.colors.ba}>
-                    {e}
-                  </Text>
-                </Sheet_leftItem>
-              );
-            })}
+            {skillOneDepth
+              .filter((e) => {
+                return e.text !== '대분류';
+              })
+              .map((e, index) => {
+                return (
+                  <Sheet_leftItem key={index} onClick={() => set1Depth(e.value)} checked={get1Depth === e.value}>
+                    <Text font={theme.typography.suit14m} color={theme.colors.ba}>
+                      {e.text}
+                    </Text>
+                  </Sheet_leftItem>
+                );
+              })}
           </Sheet_Left>
           <Sheet_right>
-            {sheet_right.map((e, index) => {
-              return (
-                <Sheet_radioDiv key={index}>
-                  <Sheet_radioLabel>
+            {skillTwoDepth[get1Depth]
+              .filter((e: { text: string }) => {
+                return e.text !== '상세분류';
+              })
+              .map((e: { text: string; checked: boolean; value: never }, index: string) => {
+                return (
+                  <Sheet_radioDiv key={index} onClick={() => onClick2Depth(e.value)}>
                     <Text font={theme.typography.suit14m} color={theme.colors.b4}>
-                      {e}
+                      {e.text}
                     </Text>
-                  </Sheet_radioLabel>
-                  <Sheet_radioInput type="radio" id={e} name="testRadio" value={e} checked />
-                  <RadioChecked />
-                </Sheet_radioDiv>
-              );
-            })}
+
+                    {get2Depth.includes(e.value) ? <RadioChecked /> : <RadioUnChecked />}
+                  </Sheet_radioDiv>
+                );
+              })}
           </Sheet_right>
         </Sheet_BodyBox>
       </BottomSheet>
@@ -217,6 +325,8 @@ const BottomWrapper = styled.div`
   gap: 35px;
 `;
 
+const BottomBox = styled.div``;
+
 const Sheet_TopBox = styled.div`
   box-sizing: border-box;
   display: flex;
@@ -237,9 +347,10 @@ const Sheet_Left = styled.div`
   width: 38%;
 `;
 
-const Sheet_leftItem = styled.div`
+const Sheet_leftItem = styled.div<{ checked: boolean }>`
   padding: 10px 22px;
-  background-color: ${(props) => props.theme.colors.bg1};
+
+  background-color: ${(props) => (props.checked ? '' : props.theme.colors.bg1)};
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -263,14 +374,4 @@ const Sheet_radioDiv = styled.div`
 
   height: 54px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-`;
-const Sheet_radioLabel = styled.label`
-  width: 100%;
-  background-image: url(RadioChecked);
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  cursor: pointer;
-`;
-const Sheet_radioInput = styled.input`
-  display: none;
 `;
