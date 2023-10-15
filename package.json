@@ -39,5 +39,6 @@
     "vite": "^4.4.5",
     "vite-plugin-mkcert": "^1.16.0",
     "vite-plugin-svgr": "^3.2.0"
-  }
+  },
+  "proxy": "http://15.164.242.20"
 }

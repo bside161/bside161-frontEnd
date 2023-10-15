@@ -14,6 +14,7 @@ const colors = {
   l3: 'rgba(0, 0, 0, 0.05)',
   w1: '#FFFFFF',
   w2: 'rgba(255, 255, 255, 0.90)',
+  disabled: 'rgba(245, 246, 248, 1)',
 };
 
 const typography = {
