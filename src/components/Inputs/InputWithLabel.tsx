@@ -53,7 +53,8 @@ const InputWithLabel = ({
       <LabelWrapper>
         <Label>{label}</Label>
         <TextLimit>
-          <Count>{count}</Count>/{limit}
+          <Count>{count}</Count>
+          <MaxCount>/{limit}</MaxCount>
         </TextLimit>
       </LabelWrapper>
 
@@ -90,6 +91,10 @@ const TextLimit = styled.div``;
 
 const Count = styled.span`
   color: ${({ theme }) => theme.colors.c1};
+`;
+
+const MaxCount = styled.span`
+  color: ${({ theme }) => theme.colors.b9};
 `;
 
 const Input = styled.input`

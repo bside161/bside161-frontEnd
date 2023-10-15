@@ -73,8 +73,8 @@ const Trigger = styled.div<{ disabled?: boolean }>`
   font-weight: 500;
   box-sizing: border-box;
   gap: 10px;
-  background-color: ${({ theme, disabled }) => (disabled ? theme.colors.l2 : theme.colors.w1)};
-  color: ${({ theme, disabled }) => (disabled ? theme.colors.l2 : theme.colors.b4)};
+  background-color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.w1)};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.ba : theme.colors.b4)};
   border: 1px solid ${({ theme }) => theme.colors.l2};
   border-radius: 6px;
   cursor: ${(props) => (props.disabled ? 'auto' : 'pointer')};

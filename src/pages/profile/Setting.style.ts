@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  padding-bottom: 60px;
+  padding-bottom: 45px;
 `;
 
 const MainWrapper = styled.div`
@@ -13,7 +13,7 @@ const MainBox = styled.section`
   background-color: ${(props) => props.theme.colors.w1};
   border-radius: 16px 16px 0 0;
   padding: 0 22px;
-  margin-top: 135px;
+  margin-top: 107px;
   position: relative;
   padding-bottom: 40px;
 `;
@@ -26,11 +26,13 @@ const SettingWrapper = styled.div`
 
 const SettingBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 `;
 
 const TagBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 `;
 
@@ -59,16 +61,22 @@ const Img = styled.img`
 
 const ImageWrite = styled.div`
   position: absolute;
-  bottom: -8px;
-  right: 0%;
+  bottom: 0;
+  right: 0;
   background: ${({ theme }) => theme.colors.w1};
-  padding: 7px;
+  /* padding: 7px; */
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e6e6e6;
   border-radius: 50%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px;
 `;
 
 const BottomWrapper = styled.div`
-  padding: 0 22px 34px 22px;
+  padding: 0 22px;
   background: ${({ theme }) => theme.colors.w1};
 `;
 

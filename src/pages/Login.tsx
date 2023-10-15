@@ -1,6 +1,8 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useEffect } from 'react';
 
+import { AuthKakao } from '../api/api';
 import { ReactComponent as Kakao } from '../assets/svg/login/kakao.svg';
 import { ReactComponent as Naver } from '../assets/svg/login/naver.svg';
 import { ReactComponent as Logo } from '../assets/svg/login_main.svg';
@@ -18,6 +20,16 @@ const Login = () => {
   const onClickKakao = () => {
     window.location.href = link;
   };
+
+  useEffect(() => {
+    AuthKakao()
+      .then((res) => {
+        console.log('res', res);
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+  }, []);
 
   return (
     <Container>

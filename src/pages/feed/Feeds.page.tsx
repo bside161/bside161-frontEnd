@@ -85,7 +85,7 @@ const Feeds = () => {
         <FeedFixBox>
           <Write />
 
-          <Spacer top={24} />
+          <Spacer top={27} />
           <FeedFixTextWrapper>
             <Text font={theme.typography.suit22sb} color={theme.colors.w1}>
               일이삼사오육칠팔구십
@@ -99,7 +99,7 @@ const Feeds = () => {
           <Text font={theme.typography.suit22r} color={theme.colors.w1}>
             재밌는 아이디어를 들려주세요!
           </Text>
-          <Spacer top={4} />
+          <Spacer top={14} />
 
           <Text font={theme.typography.suit15ra} color={theme.colors.w2}>{`아이디어 적으러 가기 >`}</Text>
         </FeedFixBox>
@@ -197,7 +197,7 @@ const Wrapper = styled.section`
 `;
 
 const FeedFixBox = styled.div`
-  padding: 100px 30px 50px 30px;
+  padding: 90px 30px 50px 30px;
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.c1};
@@ -218,7 +218,7 @@ const FeedFixTextWrapper = styled.div`
 `;
 
 const FeedBox = styled.div`
-  background-color: ${(props) => props.theme.colors.w1};
+  background-color: ${(props) => props.theme.colors.bg1};
   border-radius: 16px 16px 0 0;
   /* padding: 0 22px; */
 `;
