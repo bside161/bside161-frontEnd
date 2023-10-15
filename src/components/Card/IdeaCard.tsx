@@ -32,12 +32,12 @@ const IdeaCard = ({ mine, tags }: TagProps) => {
             </Text>
             <Spacer top={7} />
 
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
               <Text font={theme.typography.suit12r} color={theme.colors.b9}>
                 스킬
               </Text>
               <Spacer left={6} />
-              <div style={{ borderLeft: `1px solid ${theme.colors.b9}` }} />
+              <div style={{ width: 1, height: 10, backgroundColor: theme.colors.l2 }} />
               <Spacer left={6} />
               <Text font={theme.typography.suit12r} color={theme.colors.b9}>
                 작성시간
@@ -52,10 +52,10 @@ const IdeaCard = ({ mine, tags }: TagProps) => {
         <Text font={theme.typography.suit14m} color={theme.colors.c1}>
           분야 / 분야 / 분야
         </Text>
-        <Spacer top={4} />
+        <Spacer top={7} />
 
         <Text font={theme.typography.suit16sb}>20자 내외의 제목이 들어가는 영역입니다.</Text>
-        <Spacer top={8} />
+        <Spacer top={10} />
 
         <ContentText>
           3줄의 아이디어 내용이 들어가는 영역입니다. 3줄 이상부터는 말줄임표로 노출합니다. 3줄의 아이디어 내용이
@@ -115,7 +115,7 @@ const ProfileBox = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px 0 0;
+  margin: 22px 0 0;
 `;
 
 const ContentText = styled.div`

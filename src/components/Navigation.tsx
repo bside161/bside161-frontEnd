@@ -59,10 +59,10 @@ const NavBackImg = styled.img`
 const NavWrapper = styled.nav`
   width: 100%;
   position: absolute;
-  bottom: 10%;
+  bottom: 8%;
   display: flex;
   justify-content: space-between;
-  gap: 15%;
+  gap: 20%;
 `;
 
 const NavItem = styled.div`
@@ -84,7 +84,7 @@ const NavCenterItem = styled.div`
   position: absolute;
   background-color: ${({ theme }) => theme.colors.c1};
   border-radius: 50%;
-  bottom: 0;
+  bottom: -3px;
   transform: translate(-50%, -50%);
   left: 50%;
   width: 58px;

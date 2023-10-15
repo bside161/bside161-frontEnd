@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-const host = window.location.hostname === 'localhost' ? 'http://{your server URL}' : 'api';
+const host = window.location.hostname === 'localhost' ? 'http://15.164.242.20/api' : 'api';
+
+axios.defaults.withCredentials = true;
 
 const query = axios.create({
-  baseURL: host,
+  baseURL: 'http://15.164.242.20/api',
   withCredentials: true,
 });
 
-export const AuthKakao = async (code) => {
+export const AuthKakao = async () => {
   try {
     const response = await query.get('/auth/idpresponse/kakao', {
       withCredentials: true,

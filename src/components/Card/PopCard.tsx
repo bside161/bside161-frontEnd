@@ -2,6 +2,10 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import IdeaBack from '../../assets/images/idea_back.png';
+import IdeaBack2 from '../../assets/images/idea_back2.png';
+import IdeaBack3 from '../../assets/images/idea_back3.png';
+import IdeaBack4 from '../../assets/images/idea_back4.png';
+import IdeaBack5 from '../../assets/images/idea_back5.png';
 import Text from '../Text';
 
 interface IdeaCardProps {
@@ -10,17 +14,23 @@ interface IdeaCardProps {
   image?: string;
 }
 
+const randomImages = [IdeaBack, IdeaBack2, IdeaBack3, IdeaBack4, IdeaBack5];
+
 const PopCard = ({ category, title, image }: IdeaCardProps) => {
   const theme = useTheme();
+
+  const randomNumber = Math.floor(Math.random() * 5) + 1;
+  const test = randomImages[randomNumber];
+  console.log('test', test);
   return (
     <IdeaCardWrapper>
       <img src={image ?? IdeaBack} />
       <CardBoxBack />
       <CardBox>
-        <Text style={{ fontSize: 13, fontWeight: 500 }} color={theme.colors.w1}>
+        <Text style={{ fontSize: 13, fontWeight: 800 }} color={theme.colors.w1}>
           {category}
         </Text>
-        <Text style={{ fontSize: 14, fontWeight: 600, lineHeight: '22px' }} color={theme.colors.w1}>
+        <Text style={{ fontSize: 14, fontWeight: 600, lineHeight: '20px' }} color={theme.colors.w1}>
           {title}
         </Text>
       </CardBox>
