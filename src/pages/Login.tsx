@@ -21,15 +21,15 @@ const Login = () => {
     window.location.href = link;
   };
 
-  useEffect(() => {
-    AuthKakao()
-      .then((res) => {
-        console.log('res', res);
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   AuthKakao()
+  //     .then((res) => {
+  //       console.log('res', res);
+  //     })
+  //     .catch((err) => {
+  //       console.log('err', err);
+  //     });
+  // }, []);
 
   return (
     <Container>
