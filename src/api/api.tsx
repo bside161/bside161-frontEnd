@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const host = window.location.hostname === 'localhost' ? 'http://15.164.242.20/api' : 'api';
+const host = window.location.hostname === 'localhost' ? 'http://15.164.242.20/api' : '/api';
 
 axios.defaults.withCredentials = true;
 
