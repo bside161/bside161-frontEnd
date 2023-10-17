@@ -20,13 +20,13 @@ export default defineConfig({
   server: {
     // https: true,
     port: 3020,
-    proxy: {
-      '/api': {
-        target: 'http://15.164.242.20', // the target server you want to proxy to
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/'), // remove the /api prefix before forwarding the request
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://15.164.242.20', // the target server you want to proxy to
+    //     changeOrigin: true,
+    //     // rewrite: (path) => path.replace(/^\/api/, '/'), // remove the /api prefix before forwarding the request
+    //   },
+    // },
     // proxy: {
     //   '/api': 'http://15.164.242.20',
     // },
