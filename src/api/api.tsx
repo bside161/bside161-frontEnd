@@ -5,7 +5,7 @@ const host = window.location.hostname === 'localhost' ? 'http://15.164.242.20/ap
 axios.defaults.withCredentials = true;
 
 const query = axios.create({
-  baseURL: host,
+  baseURL: 'http://15.164.242.20/api',
   withCredentials: true,
 });
 
