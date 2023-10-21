@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { ChangeEvent, useState } from 'react';
 
+import { ReactComponent as Dot } from '../../assets/svg/dot.svg';
+
 interface InputProps {
   multiline?: boolean;
   label: string;
@@ -12,6 +14,7 @@ interface InputProps {
   message?: string;
   hideMessage?: boolean;
   onChange: (value: string) => void;
+  required?: boolean;
 }
 
 const InputWithLabel = ({
@@ -25,6 +28,7 @@ const InputWithLabel = ({
   message,
   hideMessage,
   onChange,
+  required,
 }: InputProps) => {
   const [count, setCount] = useState(0);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +55,14 @@ const InputWithLabel = ({
   return (
     <div>
       <LabelWrapper>
-        <Label>{label}</Label>
+        <Label>
+          {label}
+          {required && (
+            <DotWrapper>
+              <Dot />
+            </DotWrapper>
+          )}
+        </Label>
         <TextLimit>
           <Count>{count}</Count>
           <MaxCount>/{limit}</MaxCount>
@@ -85,6 +96,14 @@ const Label = styled.label`
   font-weight: 500;
   color: ${({ theme }) => theme.colors.b9};
   padding-right: 10px;
+  position: relative;
+`;
+
+const DotWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
 `;
 
 const TextLimit = styled.div``;
