@@ -80,6 +80,13 @@ const BottomWrapper = styled.div`
   background: ${({ theme }) => theme.colors.w1};
 `;
 
+const DotWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+`;
+
 export {
   Container,
   ImageWrapper,
@@ -92,4 +99,5 @@ export {
   MainBox,
   MainWrapper,
   BottomWrapper,
+  DotWrapper,
 };

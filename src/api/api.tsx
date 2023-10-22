@@ -5,13 +5,14 @@ const host = window.location.hostname === 'localhost' ? 'http://15.164.242.20/ap
 axios.defaults.withCredentials = true;
 
 const query = axios.create({
-  baseURL: 'http://15.164.242.20/api',
+  // baseURL: 'http://15.164.242.20/api',
+  // baseURL: host,
   withCredentials: true,
 });
 
 export const AuthKakao = async () => {
   try {
-    const response = await query.get('/auth/idpresponse/kakao', {
+    const response = await query.get('/api/auth/idpresponse/kakao', {
       withCredentials: true,
     });
     if (response.data) {
@@ -27,7 +28,8 @@ export const AuthKakao = async () => {
 
 export const AuthKakaoMe = async (token: string) => {
   try {
-    const kakaoResponse = await query.get('/profiles', {
+    const kakaoResponse = await query.get('/api/profiles', {
+      withCredentials: true,
       headers: {
         Authorization: `Bearer ${token}`,
       },
