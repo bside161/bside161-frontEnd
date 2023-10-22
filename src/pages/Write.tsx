@@ -80,42 +80,52 @@ const Write = () => {
     }
   };
 
-  const options = {
-    method: 'POST',
-    url: 'http://15.164.242.20/api/posts',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: 'Bearer 123',
-    },
-    data: {
-      title: 'string',
-      content: 'string',
-      domain: 'IT',
-      purpose: '사이드프로젝트',
-      collaboration: '상관없음',
-      area: '서울특별시',
-      members: ['string'],
-    },
-  };
-
-  const aaa = async () => {
-    console.log('ddfㅁㄴㅇㄹㅇㅇ');
-
-    const { data } = await axios.request(options);
-    console.log(data, 'dㅁㄴㅇㄹd');
-
-    try {
-      const { data } = await axios.request(options);
-      console.log(data);
-    } catch (error) {
-      console.error(error);
+  const onClick2DepthDelete = (e: never) => {
+    if (get2Depth.indexOf(e) !== -1) {
+      set2Depth(
+        get2Depth.filter((item) => {
+          return item !== e;
+        }),
+      );
     }
   };
 
+  // const options = {
+  //   method: 'POST',
+  //   url: 'http://15.164.242.20/api/posts',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     Accept: 'application/json',
+  //     Authorization: 'Bearer 123',
+  //   },
+  //   data: {
+  //     title: 'string',
+  //     content: 'string',
+  //     domain: 'IT',
+  //     purpose: '사이드프로젝트',
+  //     collaboration: '상관없음',
+  //     area: '서울특별시',
+  //     members: ['string'],
+  //   },
+  // };
+
+  // const aaa = async () => {
+  //   console.log('ddfㅁㄴㅇㄹㅇㅇ');
+
+  //   const { data } = await axios.request(options);
+  //   console.log(data, 'dㅁㄴㅇㄹd');
+
+  //   try {
+  //     const { data } = await axios.request(options);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   return (
     <MainWrapper>
-      <div onClick={aaa}>ddd</div>
+      {/* <div onClick={aaa}>ddd</div> */}
       {/* 헤더 */}
       <HeaderBox>
         <Back />
@@ -182,7 +192,6 @@ const Write = () => {
             <Text font={theme.typography.suit15m} color={theme.colors.b9}>
               팀원 모집
             </Text>
-
             <div
               onClick={() => {
                 setIsOpenBottomSheet(true);
@@ -193,6 +202,18 @@ const Write = () => {
               </Text>
             </div>
           </div>
+
+          <Spacer bottom={12} />
+          <TeamLabelBox>
+            {get2Depth.map((item) => {
+              return (
+                <TeamLabel>
+                  {item}
+                  <Xmark onClick={() => onClick2DepthDelete(item)} />
+                </TeamLabel>
+              );
+            })}
+          </TeamLabelBox>
 
           <Spacer bottom={40} />
         </BottomBox>
@@ -374,4 +395,27 @@ const Sheet_radioDiv = styled.div`
 
   height: 54px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
+const TeamLabelBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
+const TeamLabel = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 16px 12px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid ${({ theme }) => theme.colors.l2};
+  border-radius: 6px;
+  background-color: ${(props) => props.theme.colors.c1};
+  color: ${(props) => props.theme.colors.w1};
+  font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+  gap: 14px;
 `;
