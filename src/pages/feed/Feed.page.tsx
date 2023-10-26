@@ -73,9 +73,11 @@ const FeedDetailPage = () => {
             <Text font={theme.typography.suit14sm} color={theme.colors.c1}>
               IT / 유튜브 컨텐츠
             </Text>
-            <Spacer top={4} />
-            <Text font={theme.typography.suit18sb}>쇼츠 전용 뉴스를 함께 제작하실 분!</Text>
-            <Spacer top={4} />
+            <Spacer top={8} />
+            <Text font={theme.typography.suit18sb} color={theme.colors.b4}>
+              쇼츠 전용 뉴스를 함께 제작하실 분!
+            </Text>
+            <Spacer top={8} />
             <TitleWrapper_info>
               <Text font={theme.typography.suit12r} color={theme.colors.b9}>
                 2023.09.09 23:23
@@ -89,7 +91,7 @@ const FeedDetailPage = () => {
         </TitleWrapper>
         <Divider color={theme.colors.l3} top={16} bottom={16} />
 
-        <Text font={theme.typography.suit14m} color={theme.colors.b6} style={{ lineHeight: '24px' }}>
+        <Text font={theme.typography.suit15ra} color={theme.colors.b6} style={{ lineHeight: '24px' }}>
           현재 저희 팀은 유튜브 컨텐츠를 위해 프로젝트를 진행하고 있습니다.
           <br />
           인원 충원을 위해 멤버를 모집하고 있어요. <br />
@@ -114,7 +116,10 @@ const FeedDetailPage = () => {
                   <Text font={theme.typography.suit14m} color={theme.colors.b9}>
                     {item.indexName}
                   </Text>
-                  <Text font={theme.typography.suit14m}>{item.tag}</Text>
+
+                  <Text font={theme.typography.suit14m} color={theme.colors.b4}>
+                    {item.tag}
+                  </Text>
                 </div>
               ) : (
                 <div>
@@ -259,7 +264,8 @@ const DropDownSelect = styled.div`
 
 // ContantWrapper
 const ContantWrapper = styled.div`
-  padding: 30px 22px 20px 22px;
+  padding: 30px 22px 30px 22px;
+  margin-top: 48px;
 `;
 const TitleWrapper = styled.div``;
 const TitleWrapper_info = styled.div`
@@ -272,7 +278,7 @@ const TitleWrapper_info = styled.div`
 const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 35px;
   padding: 30px 22px 20px 22px;
 `;
 
@@ -304,6 +310,10 @@ const Input = styled.input`
   border: none;
   background-color: ${(props) => props.theme.colors.bg1};
   color: ${(props) => props.theme.colors.t};
+  font-style: normal;
+  font-family: SUIT;
+  font-weight: 400;
+  line-height: normal;
   ::placeholder {
     color: ${(props) => props.theme.colors.ba};
   }
@@ -324,7 +334,7 @@ const Textarea = styled.textarea`
 `;
 
 const CommentsBox = styled.div`
-  margin-bottom: 20px;
+  margin: 20px 0px;
 `;
 
 const CommnetsBottomBox = styled.div`

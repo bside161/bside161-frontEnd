@@ -13,8 +13,10 @@ const ProfileComponent = () => {
     <ProfileWrapper>
       <Profile />
       <ProfileBox>
-        <Text font={theme.typography.suit14m}>일이삼사오육칠팔구</Text>
-
+        <Text font={theme.typography.suit14m} color={theme.colors.b4}>
+          일이삼사오육칠팔구
+        </Text>
+        <Spacer bottom="6px" />
         <Profile_info>
           <Text font={theme.typography.suit12r} color={theme.colors.b9}>
             UXUI

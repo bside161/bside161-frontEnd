@@ -346,7 +346,7 @@ const Agreement = () => {
         아이디어 표절이나 도용 시 해당 사실을 근거로 <br />
         불이익이 발생할 수 있습니다.
       </Text>
-      <Spacer bottom={52} />
+      <Spacer bottom={50} />
       <Text
         font={theme.typography.suit13m}
         color={theme.colors.b4}
@@ -392,5 +392,5 @@ const AgreementWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 20px 34px;
+  padding: 20px 22px;
 `;

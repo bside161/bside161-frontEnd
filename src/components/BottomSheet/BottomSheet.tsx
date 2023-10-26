@@ -10,7 +10,7 @@ interface BottomSheetProps {
 
 const BottomSheet = ({ children, isOpen, onClose, scroll = false }: BottomSheetProps) => {
   return (
-    <BottomSheetContainer>
+    <BottomSheetContainer isOpen={isOpen}>
       {isOpen && <Overlay onClick={onClose} />}
       <BottomSheetWrapper isOpen={isOpen} scroll={scroll}>
         <Content>{children}</Content>
@@ -20,7 +20,9 @@ const BottomSheet = ({ children, isOpen, onClose, scroll = false }: BottomSheetP
 };
 export default BottomSheet;
 
-const BottomSheetContainer = styled.div``;
+const BottomSheetContainer = styled.div<{ isOpen: boolean }>`
+  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
+`;
 
 const BottomSheetWrapper = styled.div<{ isOpen: boolean; scroll: boolean }>`
   position: fixed;
