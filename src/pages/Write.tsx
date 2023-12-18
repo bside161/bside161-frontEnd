@@ -90,38 +90,38 @@ const Write = () => {
     }
   };
 
-  // const options = {
-  //   method: 'POST',
-  //   url: 'http://15.164.242.20/api/posts',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     Accept: 'application/json',
-  //     Authorization: 'Bearer 123',
-  //   },
-  //   data: {
-  //     title: 'string',
-  //     content: 'string',
-  //     domain: 'IT',
-  //     purpose: '사이드프로젝트',
-  //     collaboration: '상관없음',
-  //     area: '서울특별시',
-  //     members: ['string'],
-  //   },
-  // };
+  const options = {
+    method: 'POST',
+    url: 'http://15.164.242.20/api/posts',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: 'Bearer 123',
+    },
+    data: {
+      title: 'string',
+      content: 'string',
+      domain: 'IT',
+      purpose: '사이드프로젝트',
+      collaboration: '상관없음',
+      area: '서울특별시',
+      members: ['string'],
+    },
+  };
 
-  // const aaa = async () => {
-  //   console.log('ddfㅁㄴㅇㄹㅇㅇ');
+  const aaa = async () => {
+    console.log('ddfㅁㄴㅇㄹㅇㅇ');
 
-  //   const { data } = await axios.request(options);
-  //   console.log(data, 'dㅁㄴㅇㄹd');
+    const { data } = await axios.request(options);
+    console.log(data, 'dㅁㄴㅇㄹd');
 
-  //   try {
-  //     const { data } = await axios.request(options);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+    try {
+      const { data } = await axios.request(options);
+      console.log(data, 'data');
+    } catch (error) {
+      console.error(error, 'error');
+    }
+  };
 
   return (
     <MainWrapper>
@@ -129,7 +129,7 @@ const Write = () => {
       {/* 헤더 */}
       <HeaderBox>
         <Back />
-
+        <button onClick={() => aaa()}></button>
         <Text font={theme.typography.suit16sb} color={theme.colors.b4}>
           글쓰기
         </Text>
