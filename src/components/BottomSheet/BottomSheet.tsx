@@ -38,7 +38,7 @@ const BottomSheetWrapper = styled.div<{ isOpen: boolean; scroll: boolean }>`
   z-index: 9999;
   border-radius: 14px 14px 0 0;
   /* max-width: 375px; */
-  max-width: 480px;
+  max-width: 375px;
   width: auto;
   margin: 0 auto;
 `;

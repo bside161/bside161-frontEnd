@@ -52,7 +52,7 @@ const Agreement = () => {
 
     const BtnDiv = styled.div`
       position: fixed;
-      width: -webkit-fill-available;
+      width: 330px;
       margin-right: 22px;
       bottom: 24px;
     `;
@@ -208,7 +208,7 @@ const Agreement = () => {
 
     const BtnDiv = styled.div`
       position: fixed;
-      width: -webkit-fill-available;
+      width: 330px;
       margin-right: 22px;
       bottom: 24px;
     `;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Outlet, useMatch } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import Navigation from '../components/Navigation';
 import useRouteMatched from '../hooks/useRouteMatch';
@@ -20,8 +20,7 @@ export default MobileView;
 
 const Container = styled.main`
   height: 100%;
-  /* max-width: 375px; */
-  max-width: 480px;
+  max-width: 375px;
   width: auto;
   margin: 0 auto;
   min-height: 100%;

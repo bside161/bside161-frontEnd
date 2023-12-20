@@ -34,7 +34,7 @@ const Container = styled.header<{ main?: boolean }>`
   position: fixed;
   box-sizing: border-box;
   width: 100%;
-  max-width: 480px;
+  max-width: 375px;
   top: 0;
   z-index: 1;
 `;
